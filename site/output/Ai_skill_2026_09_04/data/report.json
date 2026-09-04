@@ -27,7 +27,7 @@
       "full_name": "obra/superpowers",
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
-      "stars": 281390,
+      "stars": 281393,
       "forks": 25207,
       "language": "Shell",
       "topics": [
@@ -37,7 +37,7 @@
         "obra",
         "sdlc"
       ],
-      "updated_at": "2026-09-04T02:50:08Z",
+      "updated_at": "2026-09-04T02:52:02Z",
       "owner": "obra",
       "created_at": "2025-10-09T19:45:18Z"
     },
@@ -47,11 +47,11 @@
       "full_name": "mattpocock/skills",
       "url": "https://github.com/mattpocock/skills",
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
-      "stars": 247636,
+      "stars": 247641,
       "forks": 20996,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T02:50:22Z",
+      "updated_at": "2026-09-04T02:53:21Z",
       "owner": "mattpocock",
       "created_at": "2026-02-03T11:15:53Z"
     },
@@ -71,7 +71,7 @@
         "claude-code",
         "developer-tools"
       ],
-      "updated_at": "2026-09-04T02:47:17Z",
+      "updated_at": "2026-09-04T02:53:15Z",
       "owner": "affaan-m",
       "created_at": "2026-01-18T00:51:51Z"
     },
@@ -81,8 +81,8 @@
       "full_name": "NousResearch/hermes-agent",
       "url": "https://github.com/NousResearch/hermes-agent",
       "description": "The agent that grows with you",
-      "stars": 240904,
-      "forks": 49367,
+      "stars": 240906,
+      "forks": 49368,
       "language": "Python",
       "topics": [
         "ai",
@@ -91,7 +91,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T02:49:58Z",
+      "updated_at": "2026-09-04T02:53:14Z",
       "owner": "NousResearch",
       "created_at": "2025-07-22T22:22:28Z"
     },
@@ -105,7 +105,7 @@
       "forks": 26565,
       "language": "TypeScript",
       "topics": [],
-      "updated_at": "2026-09-04T02:36:28Z",
+      "updated_at": "2026-09-04T02:52:14Z",
       "owner": "anomalyco",
       "created_at": "2025-04-30T20:08:00Z"
     },
@@ -155,13 +155,13 @@
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
       "description": "Public repository for Agent Skills",
-      "stars": 173701,
+      "stars": 173702,
       "forks": 20607,
       "language": "Python",
       "topics": [
         "agent-skills"
       ],
-      "updated_at": "2026-09-04T02:50:25Z",
+      "updated_at": "2026-09-04T02:52:00Z",
       "owner": "anthropics",
       "created_at": "2025-09-22T15:53:31Z"
     },
@@ -299,8 +299,8 @@
       "full_name": "Shubhamsaboo/awesome-llm-apps",
       "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
       "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
-      "stars": 135948,
-      "forks": 19995,
+      "stars": 135950,
+      "forks": 19996,
       "language": "Python",
       "topics": [
         "agents",
@@ -308,7 +308,7 @@
         "python",
         "rag"
       ],
-      "updated_at": "2026-09-04T02:33:57Z",
+      "updated_at": "2026-09-04T02:51:14Z",
       "owner": "Shubhamsaboo",
       "created_at": "2024-04-29T05:30:25Z"
     },
@@ -354,7 +354,7 @@
       "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
-      "stars": 124715,
+      "stars": 124717,
       "forks": 13347,
       "language": "Python",
       "topics": [
@@ -364,7 +364,7 @@
         "claude-code",
         "codex"
       ],
-      "updated_at": "2026-09-04T02:49:12Z",
+      "updated_at": "2026-09-04T02:52:47Z",
       "owner": "nextlevelbuilder",
       "created_at": "2025-11-30T11:36:31Z"
     }
