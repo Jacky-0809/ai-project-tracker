@@ -158,6 +158,75 @@ nav a:hover {
     margin-right: 12px;
 }
 
+/* ---- Data table (4 columns) ---- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.data-table thead th {
+    background: #1e90ff;
+    color: #fff;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.data-table tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f2f5;
+    vertical-align: top;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background: #fafbfd;
+}
+
+.data-table tbody tr:hover {
+    background: #f0f6ff;
+}
+
+.data-table .col-rank {
+    width: 40px;
+    text-align: center;
+    font-weight: 700;
+    color: #1e90ff;
+}
+
+.data-table .col-title {
+    font-weight: 600;
+    min-width: 150px;
+}
+
+.data-table .col-title a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.data-table .col-title a:hover {
+    text-decoration: underline;
+}
+
+.data-table .col-desc {
+    color: #555;
+}
+
+.data-table .col-author {
+    white-space: nowrap;
+    color: #666;
+}
+
+.data-table .col-heat {
+    white-space: nowrap;
+    color: #666;
+}
+
+.heat-stars { color: #eab308; font-weight: 600; }
+.heat-likes  { color: #e0245e; }
+.heat-views  { color: #ff0000; }
+
 footer {
     text-align: center;
     padding: 30px 0;

@@ -83,6 +83,10 @@ https://<user>.github.io/<repo>/output/Ai_skill_2026_09_04/
 - 当网络不可达（连续请求失败）时启用快速降级模式，避免逐个请求超时拖慢流水线
 - 内容仅为公开 AI 项目信息聚合，不含隐私数据
 
+## API 密钥指南
+
+如何获取 `X_BEARER_TOKEN` 与 `YOUTUBE_API_KEY` 并配置为 GitHub Actions Secrets，见 [API_GUIDE.md](API_GUIDE.md)。
+
 ## 许可
 
 MIT License

@@ -10,98 +10,102 @@ def _esc(text):
     return html_mod.escape(str(text))
 
 
+def _table_header():
+    """Return the 4-column table header row."""
+    return """<table class="data-table">
+    <thead>
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>"""
+
+
+def _table_footer():
+    return "</tbody></table>"
+
+
 def _render_github_section(items):
     if not items:
         return '<p class="empty">暂无 GitHub 数据（可检查 GITHUB_TOKEN 配额后重试）</p>'
-    rows = []
+    rows = [_table_header()]
     for it in items:
-        lang = _esc(it.get("language") or "N/A")
-        topics = "".join(
-            f'<span class="tag">{_esc(t)}</span>' for t in it.get("topics", [])[:4]
-        )
+        heat = f"<span class='heat-stars'>★</span> {it.get('stars', 0)}"
         rows.append(f"""
-        <div class="rank-item">
-            <div class="rank">{it['rank']}</div>
-            <div class="content">
-                <div class="title"><a href="{_esc(it['url'])}" target="_blank">{_esc(it['name'])}</a></div>
-                <div class="desc">{_esc(it.get('description') or '')}</div>
-                <div class="meta">
-                    <span class="metric stars">★ {it.get('stars', 0)}</span>
-                    <span class="metric">🍴 {it.get('forks', 0)}</span>
-                    <span class="metric">Lang: {lang}</span>
-                    {topics}
-                </div>
-            </div>
-        </div>""")
+        <tr>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it['url'])}" target="_blank">{_esc(it['name'])}</a></td>
+            <td class="col-desc">{_esc(it.get('description') or '')[:300]}</td>
+            <td class="col-author">{_esc(it.get('owner') or '')}</td>
+            <td class="col-heat">{heat}</td>
+        </tr>""")
+    rows.append(_table_footer())
     return "\n".join(rows)
 
 
 def _render_x_section(items):
     if not items:
         return '<p class="empty">暂无 X 数据（需配置 X_BEARER_TOKEN）</p>'
-    rows = []
+    rows = [_table_header()]
     for it in items:
+        text = (it.get("text") or "").replace("\n", " ")[:300]
+        heat = (
+            f"<span class='heat-likes'>❤️</span> {it.get('likes', 0)}"
+            f"&nbsp;🔁 {it.get('retweets', 0)}"
+        )
         rows.append(f"""
-        <div class="rank-item">
-            <div class="rank">{it['rank']}</div>
-            <div class="content">
-                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('author',''))}</a></div>
-                <div class="desc">{_esc(it.get('text') or '')}</div>
-                <div class="meta">
-                    <span class="metric">❤️ {it.get('likes', 0)}</span>
-                    <span class="metric">🔁 {it.get('retweets', 0)}</span>
-                    <span class="metric">💬 {it.get('replies', 0)}</span>
-                </div>
-            </div>
-        </div>""")
+        <tr>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('author') or it.get('text','')[:40])}</a></td>
+            <td class="col-desc">{_esc(text)}</td>
+            <td class="col-author">{_esc(it.get('author') or '')}</td>
+            <td class="col-heat">{heat}</td>
+        </tr>""")
+    rows.append(_table_footer())
     return "\n".join(rows)
 
 
 def _render_youtube_section(items):
     if not items:
         return '<p class="empty">暂无 YouTube 数据（需配置 YOUTUBE_API_KEY）</p>'
-    rows = []
+    rows = [_table_header()]
     for it in items:
         views = it.get("views", 0)
         views_str = f"{views:,}" if views else "N/A"
-        src = it.get("source", "")
-        tag = ' <span class="tag">示例</span>' if src == "示例" else ""
+        desc = it.get("description") or it.get("channel") or ""
         rows.append(f"""
-        <div class="rank-item">
-            <div class="rank">{it['rank']}</div>
-            <div class="content">
-                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a>{tag}</div>
-                <div class="desc">{_esc(it.get('channel') or '')}</div>
-                <div class="desc">{_esc(it.get('description') or '')[:150]}</div>
-                <div class="meta">
-                    <span class="metric">▶️ {views_str} views</span>
-                </div>
-            </div>
-        </div>""")
+        <tr>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a></td>
+            <td class="col-desc">{_esc(desc)[:300]}</td>
+            <td class="col-author">{_esc(it.get('channel') or '')}</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> {views_str}</td>
+        </tr>""")
+    rows.append(_table_footer())
     return "\n".join(rows)
 
 
 def _render_facebook_section(items):
     if not items:
         return '<p class="empty">暂无 Facebook 数据（公开页面抓取受限）</p>'
-    rows = []
+    rows = [_table_header()]
     for it in items:
         likes = it.get("likes", 0)
-        comments = it.get("comments", 0)
-        src = it.get("source", "")
-        tag = ' <span class="tag">示例</span>' if src == "示例" else ""
+        author = it.get("page_name") or it.get("author", "")
+        title = author
         rows.append(f"""
-        <div class="rank-item">
-            <div class="rank">{it['rank']}</div>
-            <div class="content">
-                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('page_name') or it.get('author',''))}</a>{tag}</div>
-                <div class="desc">{_esc(it.get('text') or '')[:200]}</div>
-                <div class="meta">
-                    <span class="metric">👍 {likes:,}</span>
-                    <span class="metric">💬 {comments:,}</span>
-                </div>
-            </div>
-        </div>""")
+        <tr>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(title)}</a></td>
+            <td class="col-desc">{_esc(it.get('text') or '')[:300]}</td>
+            <td class="col-author">{_esc(author)}</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> {likes:,}</td>
+        </tr>""")
+    rows.append(_table_footer())
     return "\n".join(rows)
 
 
