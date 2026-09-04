@@ -66,14 +66,21 @@ https://<user>.github.io/<repo>/output/Ai_skill_2026_09_04/
   "languages": ["Python", "TypeScript", "JavaScript"],
   "keywords": ["ai", "agent", "skill", "llm", "gpt", "ai-agent", "ai-skill", "opencode"],
   "output_site": "site",
-  "github": { "min_stars": 50, "pushed_days": 14 }
+  "github": { "min_stars": 50, "pushed_days": 14 },
+  "facebook": {
+    "pages": ["OpenAI", "DeepMind", "AnthropicAI", "MetaAILabs", "GoogleAI", "AIatMicrosoft"],
+    "show_example_flag": true
+  }
 }
 ```
+
+`facebook.pages` 配置用于（无鉴权）抓取公开页面动态；未配置密钥或抓取失败时自动降级到内置示例数据。
 
 ## 合规说明
 
 - 爬取遵守各平台服务条款与 API 使用限制
-- GitHub 未配置令牌时使用匿名公开 Search API；X / YouTube 未配置密钥时自动降级
+- GitHub 未配置令牌时使用匿名公开 Search API；X / YouTube / Facebook 未配置密钥或网络不可达时自动降级到内置示例数据并在条目上标注「示例」
+- 当网络不可达（连续请求失败）时启用快速降级模式，避免逐个请求超时拖慢流水线
 - 内容仅为公开 AI 项目信息聚合，不含隐私数据
 
 ## 许可

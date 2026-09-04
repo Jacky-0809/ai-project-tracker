@@ -64,15 +64,41 @@ def _render_youtube_section(items):
     for it in items:
         views = it.get("views", 0)
         views_str = f"{views:,}" if views else "N/A"
+        src = it.get("source", "")
+        tag = ' <span class="tag">示例</span>' if src == "示例" else ""
         rows.append(f"""
         <div class="rank-item">
             <div class="rank">{it['rank']}</div>
             <div class="content">
-                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a></div>
+                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a>{tag}</div>
                 <div class="desc">{_esc(it.get('channel') or '')}</div>
                 <div class="desc">{_esc(it.get('description') or '')[:150]}</div>
                 <div class="meta">
                     <span class="metric">▶️ {views_str} views</span>
+                </div>
+            </div>
+        </div>""")
+    return "\n".join(rows)
+
+
+def _render_facebook_section(items):
+    if not items:
+        return '<p class="empty">暂无 Facebook 数据（公开页面抓取受限）</p>'
+    rows = []
+    for it in items:
+        likes = it.get("likes", 0)
+        comments = it.get("comments", 0)
+        src = it.get("source", "")
+        tag = ' <span class="tag">示例</span>' if src == "示例" else ""
+        rows.append(f"""
+        <div class="rank-item">
+            <div class="rank">{it['rank']}</div>
+            <div class="content">
+                <div class="title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('page_name') or it.get('author',''))}</a>{tag}</div>
+                <div class="desc">{_esc(it.get('text') or '')[:200]}</div>
+                <div class="meta">
+                    <span class="metric">👍 {likes:,}</span>
+                    <span class="metric">💬 {comments:,}</span>
                 </div>
             </div>
         </div>""")
@@ -133,6 +159,7 @@ def generate_daily_html(date, data, config):
     github_html = _render_github_section(data.get("github", []))
     x_html = _render_x_section(data.get("x", []))
     youtube_html = _render_youtube_section(data.get("youtube", []))
+    facebook_html = _render_facebook_section(data.get("facebook", []))
 
     summary = _build_summary(data)
 
@@ -148,7 +175,7 @@ def generate_daily_html(date, data, config):
 <header>
     <div class="container">
         <h1>🤖 AI 项目 / AI Skill 每日排行榜</h1>
-        <div class="date">{date} · 数据来源：GitHub / X / YouTube</div>
+        <div class="date">{date} · 数据来源：GitHub / X / YouTube / Facebook</div>
     </div>
 </header>
 <nav>
@@ -182,6 +209,11 @@ def generate_daily_html(date, data, config):
         <h2><span class="platform-badge badge-youtube">YouTube</span> AI 视频 Top {top_n}</h2>
         {youtube_html}
     </div>
+
+    <div class="card">
+        <h2><span class="platform-badge badge-facebook">Facebook</span> AI 动态 Top {top_n}</h2>
+        {facebook_html}
+    </div>
 </main>
 <footer>
     <div class="container">由 GitHub Actions 自动生成 · {date} · Powered by ai-project-tracker skill</div>
@@ -192,17 +224,22 @@ def generate_daily_html(date, data, config):
 
 
 def _build_summary(data):
-    github, x, youtube = data.get("github", []), data.get("x", []), data.get("youtube", [])
+    github, x, youtube, facebook = (
+        data.get("github", []), data.get("x", []),
+        data.get("youtube", []), data.get("facebook", []),
+    )
     gh_str = f"<b>{len(github)}</b> 个仓库" if github else "无"
     x_str = f"<b>{len(x)}</b> 条讨论" if x else "无"
     yt_str = f"<b>{len(youtube)}</b> 个视频" if youtube else "无"
-    total = len(github) + len(x) + len(youtube)
+    fb_str = f"<b>{len(facebook)}</b> 条帖子" if facebook else "无"
+    total = len(github) + len(x) + len(youtube) + len(facebook)
     return f"""
     <p>本次共收录 <b>{total}</b> 条 AI 动态：</p>
     <ul>
         <li>🏆 GitHub：收录 {gh_str}</li>
         <li>🐦 X：收录 {x_str}</li>
         <li>▶️ YouTube：收录 {yt_str}</li>
+        <li>📘 Facebook：收录 {fb_str}</li>
     </ul>
-    <p>如需更多数据，请为 X 和 YouTube 配置对应的 API 密钥。</p>
+    <p>数据来源说明：GitHub 为实时 API 数据；X/YouTube/Facebook 可能为示例数据（需配置 API 密钥获取实时数据）。</p>
     """

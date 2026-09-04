@@ -5,13 +5,14 @@ description: 每日抓取GitHub、X(Twitter)、YouTube上排名前20的AI Skill�
 
 # AI项目追踪 Daily Report
 
-每日自动抓取 **GitHub**、**X (Twitter)**、**YouTube** 上排名前20的 **AI Skill** 和 **AI项目**，生成图文混合的HTML报告和PDF文件，发布到 GitHub Pages。
+每日自动抓取 **GitHub**、**X (Twitter)**、**YouTube**、**Facebook** 上排名前20的 **AI Skill** 和 **AI项目**，生成图文混合的HTML报告和PDF文件，发布到 GitHub Pages。
 
 ## 核心功能
 
 - 抓取GitHub上star增长最快的AI项目/AI Skill仓库
 - 抓取X上关于AI项目/Skill的热门讨论和推文
 - 抓取YouTube上关于AI项目/Skill的热门视频
+- 抓取Facebook公开页面的AI项目动态
 - 生成当日排名前20的AI项目报告
 - 输出HTML和PDF两种格式
 - 自动发布到GitHub Pages
@@ -25,7 +26,8 @@ ai-project-tracker/
 │   ├── scrapers/
 │   │   ├── github_scraper.py     # GitHub AI项目爬虫
 │   │   ├── x_scraper.py          # X AI讨论爬虫
-│   │   └── youtube_scraper.py    # YouTube AI视频爬虫
+│   │   ├── youtube_scraper.py    # YouTube AI视频爬虫
+│   │   └── facebook_scraper.py   # Facebook AI动态爬虫
 │   ├── generators/
 │   │   ├── html_generator.py     # HTML报告生成器
 │   │   └── pdf_generator.py      # PDF报告生成器
@@ -115,10 +117,11 @@ https://<username>.github.io/<repo>/output/Ai_skill_2026_09_04/
 
 ## 注释与合规
 
-- 遵守 GitHub / X / YouTube 的 API 使用条款和 robots.txt
+- 遵守 GitHub / X / YouTube / Facebook 的 API 使用条款和 robots.txt
 - 设置合理的抓取频率，避免触发限流
 - 内容仅为 AI 项目信息聚合，不涉及隐私
-- 若 API 不可用，脚本会自动降级为使用公开无鉴权 API 或缓存数据
+- 若 API 不可用或网络不可达，脚本会自动降级：GitHub 用匿名公开 Search API，X/YouTube/Facebook 用无鉴权公开源，最终回退到内置示例数据（条目标注「示例」）
+- 网络不可达时自动启用快速降级模式，避免逐个请求超时拖慢流水线
 
 ## 扩展功能
 

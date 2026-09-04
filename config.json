@@ -7,5 +7,9 @@
   "github": {
     "min_stars": 50,
     "pushed_days": 14
+  },
+  "facebook": {
+    "pages": ["OpenAI", "DeepMind", "AnthropicAI", "MetaAILabs", "GoogleAI", "AIatMicrosoft"],
+    "show_example_flag": true
   }
 }

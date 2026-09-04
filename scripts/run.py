@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from utils.helpers import (  # noqa: E402
     load_config, ensure_dir, save_json, current_date,
-    report_dir_name, parse_report_dir,
+    report_dir_name, parse_report_dir, reset_net_state,
 )
 
 
@@ -71,7 +71,8 @@ def main():
 
 def scrape_all(config, top_n):
     """Run all scrapers and combine into a single payload dict."""
-    payload = {"date": current_date(), "github": [], "x": [], "youtube": []}
+    payload = {"date": current_date(), "github": [], "x": [], "youtube": [], "facebook": []}
+    reset_net_state()
 
     try:
         from scrapers.github_scraper import scrape_github_top
@@ -93,6 +94,13 @@ def scrape_all(config, top_n):
         print(f"✔️  YouTube: {len(payload['youtube'])} items")
     except Exception as e:
         print(f"⚠️  YouTube scrape failed: {e}")
+
+    try:
+        from scrapers.facebook_scraper import scrape_facebook_top
+        payload["facebook"] = scrape_facebook_top(config, top_n)
+        print(f"✔️  Facebook: {len(payload['facebook'])} items")
+    except Exception as e:
+        print(f"⚠️  Facebook scrape failed: {e}")
 
     return payload
 

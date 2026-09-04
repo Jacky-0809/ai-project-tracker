@@ -81,6 +81,7 @@ nav a:hover {
 .badge-github { background: #24292e; }
 .badge-x { background: #1da1f2; }
 .badge-youtube { background: #ff0000; }
+.badge-facebook { background: #1877f2; }
 
 .rank-item {
     display: flex;

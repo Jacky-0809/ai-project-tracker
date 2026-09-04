@@ -7,8 +7,8 @@
       "full_name": "openclaw/openclaw",
       "url": "https://github.com/openclaw/openclaw",
       "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
-      "stars": 388796,
-      "forks": 81644,
+      "stars": 388798,
+      "forks": 81645,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -17,7 +17,7 @@
         "molty",
         "openclaw"
       ],
-      "updated_at": "2026-09-04T02:47:16Z",
+      "updated_at": "2026-09-04T03:33:32Z",
       "owner": "openclaw",
       "created_at": "2025-11-24T10:16:47Z"
     },
@@ -27,8 +27,8 @@
       "full_name": "obra/superpowers",
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
-      "stars": 281393,
-      "forks": 25207,
+      "stars": 281408,
+      "forks": 25208,
       "language": "Shell",
       "topics": [
         "ai",
@@ -37,7 +37,7 @@
         "obra",
         "sdlc"
       ],
-      "updated_at": "2026-09-04T02:52:02Z",
+      "updated_at": "2026-09-04T03:38:36Z",
       "owner": "obra",
       "created_at": "2025-10-09T19:45:18Z"
     },
@@ -47,11 +47,11 @@
       "full_name": "mattpocock/skills",
       "url": "https://github.com/mattpocock/skills",
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
-      "stars": 247641,
-      "forks": 20996,
+      "stars": 247734,
+      "forks": 21003,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T02:53:21Z",
+      "updated_at": "2026-09-04T03:38:04Z",
       "owner": "mattpocock",
       "created_at": "2026-02-03T11:15:53Z"
     },
@@ -61,8 +61,8 @@
       "full_name": "affaan-m/ECC",
       "url": "https://github.com/affaan-m/ECC",
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "stars": 247272,
-      "forks": 37262,
+      "stars": 247301,
+      "forks": 37269,
       "language": "JavaScript",
       "topics": [
         "ai-agents",
@@ -71,7 +71,7 @@
         "claude-code",
         "developer-tools"
       ],
-      "updated_at": "2026-09-04T02:53:15Z",
+      "updated_at": "2026-09-04T03:38:24Z",
       "owner": "affaan-m",
       "created_at": "2026-01-18T00:51:51Z"
     },
@@ -81,8 +81,8 @@
       "full_name": "NousResearch/hermes-agent",
       "url": "https://github.com/NousResearch/hermes-agent",
       "description": "The agent that grows with you",
-      "stars": 240906,
-      "forks": 49368,
+      "stars": 240933,
+      "forks": 49376,
       "language": "Python",
       "topics": [
         "ai",
@@ -91,7 +91,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T02:53:14Z",
+      "updated_at": "2026-09-04T03:38:10Z",
       "owner": "NousResearch",
       "created_at": "2025-07-22T22:22:28Z"
     },
@@ -101,11 +101,11 @@
       "full_name": "anomalyco/opencode",
       "url": "https://github.com/anomalyco/opencode",
       "description": "The open source coding agent.",
-      "stars": 203585,
+      "stars": 203600,
       "forks": 26565,
       "language": "TypeScript",
       "topics": [],
-      "updated_at": "2026-09-04T02:52:14Z",
+      "updated_at": "2026-09-04T03:36:36Z",
       "owner": "anomalyco",
       "created_at": "2025-04-30T20:08:00Z"
     },
@@ -115,8 +115,8 @@
       "full_name": "n8n-io/n8n",
       "url": "https://github.com/n8n-io/n8n",
       "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "stars": 203266,
-      "forks": 60542,
+      "stars": 203268,
+      "forks": 60543,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -125,7 +125,7 @@
         "cli",
         "data-flow"
       ],
-      "updated_at": "2026-09-04T02:31:02Z",
+      "updated_at": "2026-09-04T03:28:54Z",
       "owner": "n8n-io",
       "created_at": "2019-06-22T09:24:21Z"
     },
@@ -135,8 +135,8 @@
       "full_name": "Significant-Gravitas/AutoGPT",
       "url": "https://github.com/Significant-Gravitas/AutoGPT",
       "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
-      "stars": 187108,
-      "forks": 46040,
+      "stars": 187109,
+      "forks": 46041,
       "language": "Python",
       "topics": [
         "agentic-ai",
@@ -145,7 +145,7 @@
         "artificial-intelligence",
         "autonomous-agents"
       ],
-      "updated_at": "2026-09-04T02:41:15Z",
+      "updated_at": "2026-09-04T03:05:55Z",
       "owner": "Significant-Gravitas",
       "created_at": "2023-03-16T09:21:07Z"
     },
@@ -155,13 +155,13 @@
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
       "description": "Public repository for Agent Skills",
-      "stars": 173702,
-      "forks": 20607,
+      "stars": 173722,
+      "forks": 20608,
       "language": "Python",
       "topics": [
         "agent-skills"
       ],
-      "updated_at": "2026-09-04T02:52:00Z",
+      "updated_at": "2026-09-04T03:37:38Z",
       "owner": "anthropics",
       "created_at": "2025-09-22T15:53:31Z"
     },
@@ -171,8 +171,8 @@
       "full_name": "Snailclimb/JavaGuide",
       "url": "https://github.com/Snailclimb/JavaGuide",
       "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
-      "stars": 158258,
-      "forks": 46154,
+      "stars": 158263,
+      "forks": 46155,
       "language": "JavaScript",
       "topics": [
         "agent",
@@ -181,7 +181,7 @@
         "deepseek",
         "interview"
       ],
-      "updated_at": "2026-09-04T02:40:48Z",
+      "updated_at": "2026-09-04T03:36:05Z",
       "owner": "Snailclimb",
       "created_at": "2018-05-07T13:27:00Z"
     },
@@ -191,8 +191,8 @@
       "full_name": "langgenius/dify",
       "url": "https://github.com/langgenius/dify",
       "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
-      "stars": 154381,
-      "forks": 24402,
+      "stars": 154385,
+      "forks": 24401,
       "language": "TypeScript",
       "topics": [
         "agent",
@@ -201,7 +201,7 @@
         "agentic-workflow",
         "ai"
       ],
-      "updated_at": "2026-09-04T02:47:09Z",
+      "updated_at": "2026-09-04T03:37:13Z",
       "owner": "langgenius",
       "created_at": "2023-04-12T07:40:24Z"
     },
@@ -211,7 +211,7 @@
       "full_name": "langflow-ai/langflow",
       "url": "https://github.com/langflow-ai/langflow",
       "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
-      "stars": 154222,
+      "stars": 154224,
       "forks": 10014,
       "language": "Python",
       "topics": [
@@ -221,7 +221,7 @@
         "large-language-models",
         "multiagent"
       ],
-      "updated_at": "2026-09-04T02:49:08Z",
+      "updated_at": "2026-09-04T03:15:13Z",
       "owner": "langflow-ai",
       "created_at": "2023-02-08T22:28:03Z"
     },
@@ -231,7 +231,7 @@
       "full_name": "open-webui/open-webui",
       "url": "https://github.com/open-webui/open-webui",
       "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-      "stars": 150856,
+      "stars": 150859,
       "forks": 22043,
       "language": "Python",
       "topics": [
@@ -241,7 +241,7 @@
         "llm-webui",
         "llms"
       ],
-      "updated_at": "2026-09-04T02:48:30Z",
+      "updated_at": "2026-09-04T03:34:14Z",
       "owner": "open-webui",
       "created_at": "2023-10-06T22:08:27Z"
     },
@@ -251,11 +251,11 @@
       "full_name": "msitarzewski/agency-agents",
       "url": "https://github.com/msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
-      "stars": 149921,
-      "forks": 24156,
+      "stars": 149925,
+      "forks": 24158,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T02:38:00Z",
+      "updated_at": "2026-09-04T03:22:22Z",
       "owner": "msitarzewski",
       "created_at": "2025-10-13T12:12:29Z"
     },
@@ -265,8 +265,8 @@
       "full_name": "langchain-ai/langchain",
       "url": "https://github.com/langchain-ai/langchain",
       "description": "The agent engineering platform.",
-      "stars": 145604,
-      "forks": 24305,
+      "stars": 145605,
+      "forks": 24304,
       "language": "Python",
       "topics": [
         "agents",
@@ -275,7 +275,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T02:46:52Z",
+      "updated_at": "2026-09-04T03:19:56Z",
       "owner": "langchain-ai",
       "created_at": "2022-10-17T02:58:36Z"
     },
@@ -285,11 +285,11 @@
       "full_name": "anthropics/claude-code",
       "url": "https://github.com/anthropics/claude-code",
       "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
-      "stars": 143973,
-      "forks": 23008,
+      "stars": 143981,
+      "forks": 23010,
       "language": "Python",
       "topics": [],
-      "updated_at": "2026-09-04T02:48:16Z",
+      "updated_at": "2026-09-04T03:28:36Z",
       "owner": "anthropics",
       "created_at": "2025-02-22T17:41:21Z"
     },
@@ -299,8 +299,8 @@
       "full_name": "Shubhamsaboo/awesome-llm-apps",
       "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
       "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
-      "stars": 135950,
-      "forks": 19996,
+      "stars": 135956,
+      "forks": 19997,
       "language": "Python",
       "topics": [
         "agents",
@@ -308,7 +308,7 @@
         "python",
         "rag"
       ],
-      "updated_at": "2026-09-04T02:51:14Z",
+      "updated_at": "2026-09-04T03:33:31Z",
       "owner": "Shubhamsaboo",
       "created_at": "2024-04-29T05:30:25Z"
     },
@@ -318,7 +318,7 @@
       "full_name": "farion1231/cc-switch",
       "url": "https://github.com/farion1231/cc-switch",
       "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
-      "stars": 130967,
+      "stars": 130970,
       "forks": 9002,
       "language": "Rust",
       "topics": [
@@ -328,7 +328,7 @@
         "desktop-app",
         "grok"
       ],
-      "updated_at": "2026-09-04T02:44:08Z",
+      "updated_at": "2026-09-04T03:29:34Z",
       "owner": "farion1231",
       "created_at": "2025-08-04T14:16:16Z"
     },
@@ -338,13 +338,13 @@
       "full_name": "ggml-org/llama.cpp",
       "url": "https://github.com/ggml-org/llama.cpp",
       "description": "LLM inference in C/C++",
-      "stars": 126958,
-      "forks": 22730,
+      "stars": 126963,
+      "forks": 22732,
       "language": "C++",
       "topics": [
         "ggml"
       ],
-      "updated_at": "2026-09-04T02:49:54Z",
+      "updated_at": "2026-09-04T03:35:40Z",
       "owner": "ggml-org",
       "created_at": "2023-03-10T18:58:00Z"
     },
@@ -354,8 +354,8 @@
       "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
-      "stars": 124717,
-      "forks": 13347,
+      "stars": 124734,
+      "forks": 13348,
       "language": "Python",
       "topics": [
         "ai-skills",
@@ -364,7 +364,7 @@
         "claude-code",
         "codex"
       ],
-      "updated_at": "2026-09-04T02:52:47Z",
+      "updated_at": "2026-09-04T03:36:14Z",
       "owner": "nextlevelbuilder",
       "created_at": "2025-11-30T11:36:31Z"
     }
@@ -372,104 +372,707 @@
   "x": [
     {
       "rank": 1,
-      "text": "OpenAI released new coding agent skill that automates repo setup. Big for dev productivity.",
-      "author": "@AIEthos",
-      "likes": 1280,
-      "retweets": 412,
-      "replies": 103,
+      "id": "",
+      "text": "GPT-5 匹配基准发布：推理能力跨跃式提升，tool-use reliability 大幅改善。",
+      "author": "@OpenAI",
+      "likes": 12800,
+      "retweets": 4120,
+      "replies": 1030,
       "created_at": "",
-      "url": "https://x.com/AIEthos"
+      "url": "https://x.com/OpenAI",
+      "source": "示例"
     },
     {
       "rank": 2,
-      "text": "Anthropic's Claude Skills framework is trending — composable skill primitives everywhere.",
-      "author": "@buildergal",
-      "likes": 940,
-      "retweets": 300,
-      "replies": 75,
+      "id": "",
+      "text": "Claude Skills 生态系统日活开发者超 50万，新增 200+ 社区 skill。",
+      "author": "@AnthropicAI",
+      "likes": 9400,
+      "retweets": 3000,
+      "replies": 750,
       "created_at": "",
-      "url": "https://x.com/buildergal"
+      "url": "https://x.com/AnthropicAI",
+      "source": "示例"
     },
     {
       "rank": 3,
-      "text": "New open-source AI agent library just hit 10k stars in a week.",
-      "author": "@ml_watcher",
-      "likes": 760,
-      "retweets": 201,
-      "replies": 50,
+      "id": "",
+      "text": "DeepMind 发布 Gemini Nano 2：端侧多模态，支持实时视觉推理。",
+      "author": "@GoogleDeepMind",
+      "likes": 7600,
+      "retweets": 2010,
+      "replies": 502,
       "created_at": "",
-      "url": "https://x.com/ml_watcher"
+      "url": "https://x.com/GoogleDeepMind",
+      "source": "示例"
     },
     {
       "rank": 4,
-      "text": "Comparing opencode vs claude-code skill ecosystems — both exploding with community skill packs.",
-      "author": "@devrel_amy",
-      "likes": 611,
-      "retweets": 150,
-      "replies": 37,
+      "id": "",
+      "text": "Llama 4 Scout 开源，128k context + 多语言，训练数据超 30T tokens。",
+      "author": "@MetaAILabs",
+      "likes": 6110,
+      "retweets": 1500,
+      "replies": 375,
       "created_at": "",
-      "url": "https://x.com/devrel_amy"
+      "url": "https://x.com/MetaAILabs",
+      "source": "示例"
     },
     {
       "rank": 5,
-      "text": "RAG and vector-db tooling keeps getting better. Retrieval pipelines are table stakes now.",
-      "author": "@datascilean",
-      "likes": 540,
-      "retweets": 132,
-      "replies": 33,
+      "id": "",
+      "text": "openclaw skill 生态突破 100万次下载，agent skill 标准基本定型。",
+      "author": "@opencode_ai",
+      "likes": 5400,
+      "retweets": 1320,
+      "replies": 330,
       "created_at": "",
-      "url": "https://x.com/datascilean"
+      "url": "https://x.com/opencode_ai",
+      "source": "示例"
     },
     {
       "rank": 6,
-      "text": "Fine-tuning small LLMs on custom skills is the new frontier for solo builders.",
-      "author": "@gpu_alchemist",
-      "likes": 430,
-      "retweets": 98,
-      "replies": 24,
+      "id": "",
+      "text": "MCP 3.0 规范草案：统一 agent ↔ tool ↔ skill 的交互协议。",
+      "author": "@AnthropicAI",
+      "likes": 4300,
+      "retweets": 980,
+      "replies": 245,
       "created_at": "",
-      "url": "https://x.com/gpu_alchemist"
+      "url": "https://x.com/AnthropicAI",
+      "source": "示例"
     },
     {
       "rank": 7,
-      "text": "MCP server ecosystem expanding fast — agents can now touch every real-world API.",
-      "author": "@interop_joe",
-      "likes": 388,
-      "retweets": 77,
-      "replies": 19,
+      "id": "",
+      "text": "微软 Copilot Studio 新增 AI skill marketplace，企业可内部发布 skill。",
+      "author": "@microsoft",
+      "likes": 3880,
+      "retweets": 770,
+      "replies": 192,
       "created_at": "",
-      "url": "https://x.com/interop_joe"
+      "url": "https://x.com/microsoft",
+      "source": "示例"
     },
     {
       "rank": 8,
-      "text": "AI eval harnesses for agent skills are emerging as the must-have tool of 2026.",
-      "author": "@eval_guru",
-      "likes": 301,
-      "retweets": 64,
-      "replies": 16,
+      "id": "",
+      "text": "NousResearch Hermes 3 发布：首个支持通用 skill 执行的本地 agent 模型。",
+      "author": "@NousResearch",
+      "likes": 3010,
+      "retweets": 640,
+      "replies": 160,
       "created_at": "",
-      "url": "https://x.com/eval_guru"
+      "url": "https://x.com/NousResearch",
+      "source": "示例"
     },
     {
       "rank": 9,
-      "text": "Community awesome-list of AI agent skills reached 500+ curated entries today.",
-      "author": "@curator_dan",
-      "likes": 275,
-      "retweets": 51,
-      "replies": 12,
+      "id": "",
+      "text": "vLLM v0.7 支持 speculative decoding + skill-aware routing，推理成本降 40%。",
+      "author": "@vaboratory",
+      "likes": 2750,
+      "retweets": 510,
+      "replies": 127,
       "created_at": "",
-      "url": "https://x.com/curator_dan"
+      "url": "https://x.com/vaboratory",
+      "source": "示例"
     },
     {
       "rank": 10,
-      "text": "Local-first LLM runtime gaining traction — privacy-preserving agent skills on-device.",
-      "author": "@privacyninja",
-      "likes": 240,
-      "retweets": 43,
-      "replies": 10,
+      "id": "",
+      "text": "AI safety eval harness 1.0：针对 agent skill 的标准化安全评测框架。",
+      "author": "@AIethicsboard",
+      "likes": 2400,
+      "retweets": 430,
+      "replies": 107,
       "created_at": "",
-      "url": "https://x.com/privacyninja"
+      "url": "https://x.com/AIethicsboard",
+      "source": "示例"
+    },
+    {
+      "rank": 11,
+      "id": "",
+      "text": "社区 awesome-agent-skills 精选列表突破 1000 条，覆盖 30+ 平台。",
+      "author": "@coolabaans",
+      "likes": 2100,
+      "retweets": 380,
+      "replies": 95,
+      "created_at": "",
+      "url": "https://x.com/coolabaans",
+      "source": "示例"
+    },
+    {
+      "rank": 12,
+      "id": "",
+      "text": "Groq 推出 on-device LLM runtime：本地执行 skill 的实时推理引擎。",
+      "author": "@GroqInc",
+      "likes": 1800,
+      "retweets": 320,
+      "replies": 80,
+      "created_at": "",
+      "url": "https://x.com/GroqInc",
+      "source": "示例"
+    },
+    {
+      "rank": 13,
+      "id": "",
+      "text": "RAG 2.0：混合检索 + skill 工具链，Agent 端到端准确率提升至 92%。",
+      "author": "@llamaindex",
+      "likes": 1600,
+      "retweets": 280,
+      "replies": 70,
+      "created_at": "",
+      "url": "https://x.com/llamaindex",
+      "source": "示例"
+    },
+    {
+      "rank": 14,
+      "id": "",
+      "text": "LangGraph 2.0：原生 skill 支持 + 可视化调试，agent 编排进入新阶段。",
+      "author": "@LangChainAI",
+      "likes": 1400,
+      "retweets": 240,
+      "replies": 60,
+      "created_at": "",
+      "url": "https://x.com/LangChainAI",
+      "source": "示例"
+    },
+    {
+      "rank": 15,
+      "id": "",
+      "text": "HuggingFace Open LLM Leaderboard 新增 skill 执行能力评分维度。",
+      "author": "@huggingface",
+      "likes": 1200,
+      "retweets": 200,
+      "replies": 50,
+      "created_at": "",
+      "url": "https://x.com/huggingface",
+      "source": "示例"
+    },
+    {
+      "rank": 16,
+      "id": "",
+      "text": "AI agent observability 标准化：Skills 可追踪、可审计、可回滚。",
+      "author": "@Weights_Biases",
+      "likes": 1100,
+      "retweets": 180,
+      "replies": 45,
+      "created_at": "",
+      "url": "https://x.com/Weights_Biases",
+      "source": "示例"
+    },
+    {
+      "rank": 17,
+      "id": "",
+      "text": "多模态 skill 框架成熟：视觉/音频/代码 skill 可自由组合编排。",
+      "author": "@Cohere_Labs",
+      "likes": 950,
+      "retweets": 150,
+      "replies": 37,
+      "created_at": "",
+      "url": "https://x.com/Cohere_Labs",
+      "source": "示例"
+    },
+    {
+      "rank": 18,
+      "id": "",
+      "text": "Edge AI 兴起：skill 在手机/IoT 设备上直接执行，延迟降至毫秒级。",
+      "author": "@EdgeImpulse",
+      "likes": 820,
+      "retweets": 120,
+      "replies": 30,
+      "created_at": "",
+      "url": "https://x.com/EdgeImpulse",
+      "source": "示例"
+    },
+    {
+      "rank": 19,
+      "id": "",
+      "text": "AI coding agent 技能竞赛：首周 500+ 开发者提交自定义 skill。",
+      "author": "@devpost",
+      "likes": 700,
+      "retweets": 90,
+      "replies": 22,
+      "created_at": "",
+      "url": "https://x.com/devpost",
+      "source": "示例"
+    },
+    {
+      "rank": 20,
+      "id": "",
+      "text": "OpenAI Codex 开源终局：skill 标准完全开放，生态进入 fast-follow 阶段。",
+      "author": "@OpenAI",
+      "likes": 600,
+      "retweets": 75,
+      "replies": 18,
+      "created_at": "",
+      "url": "https://x.com/OpenAI",
+      "source": "示例"
     }
   ],
-  "youtube": []
+  "youtube": [
+    {
+      "rank": 1,
+      "id": "",
+      "title": "OpenAI GPT-5 完整技术分析：推理、工具使用、多模态能力全面评测",
+      "description": "深入分析 GPT-5 的推理能力提升、原生工具调用、多模态融合...",
+      "channel": "AI Explained",
+      "published_at": "",
+      "views": 2850000,
+      "likes": 142000,
+      "url": "https://www.youtube.com/results?search_query=OpenAI+GPT-5+完整技术分析：推理、工具使用、多模",
+      "source": "示例"
+    },
+    {
+      "rank": 2,
+      "id": "",
+      "title": "Claude 4 Skills 生态全景：如何用 skill 扩展 Claude 的能力边界",
+      "description": "全面介绍 Claude Skills 框架、社区 skill 市场、企业部署最佳实践...",
+      "channel": "Matthew Berman",
+      "published_at": "",
+      "views": 1620000,
+      "likes": 98000,
+      "url": "https://www.youtube.com/results?search_query=Claude+4+Skills+生态全景：如何用+skill",
+      "source": "示例"
+    },
+    {
+      "rank": 3,
+      "id": "",
+      "title": "Llama 4 开源震撼发布：128k context + 端侧推理实战",
+      "description": "Meta Llama 4 Scout/B开源模型对比、性能基准、本地部署指南...",
+      "channel": "Two Minute Papers",
+      "published_at": "",
+      "views": 1450000,
+      "likes": 89000,
+      "url": "https://www.youtube.com/results?search_query=Llama+4+开源震撼发布：128k+context+++",
+      "source": "示例"
+    },
+    {
+      "rank": 4,
+      "id": "",
+      "title": "AI Agent 工具链 2026：从 skill 到编排到生产的完整流程",
+      "description": "深入讲解现代 AI agent 的 skill 架构、MCP 协议、生产部署经验...",
+      "channel": "Andrej Karpathy",
+      "published_at": "",
+      "views": 1380000,
+      "likes": 85000,
+      "url": "https://www.youtube.com/results?search_query=AI+Agent+工具链+2026：从+skill+到编排到",
+      "source": "示例"
+    },
+    {
+      "rank": 5,
+      "id": "",
+      "title": "MCP 3.0 协议详解：统一 agent ↔ tool ↔ skill 交互标准",
+      "description": "Anthropic 官方讲解 Model Context Protocol 3.0 的设计哲学和实现细节...",
+      "channel": "Anthropic",
+      "published_at": "",
+      "views": 1120000,
+      "likes": 72000,
+      "url": "https://www.youtube.com/results?search_query=MCP+3.0+协议详解：统一+agent+↔+tool+↔",
+      "source": "示例"
+    },
+    {
+      "rank": 6,
+      "id": "",
+      "title": "openclaw + opencode skill 开发实战：从零构建生产级 AI 工具",
+      "description": "手把手教学如何为 Claude Code / OpenCode 编写高质量 skill...",
+      "channel": "The AI Epiphany",
+      "published_at": "",
+      "views": 980000,
+      "likes": 64000,
+      "url": "https://www.youtube.com/results?search_query=openclaw+++opencode+skill+开发实战",
+      "source": "示例"
+    },
+    {
+      "rank": 7,
+      "id": "",
+      "title": "DeepMind Gemini Nano 2：端侧多模态 AI 的突破与局限",
+      "description": "Google DeepMind 最新端侧模型 Gemini Nano 2 技术解读...",
+      "channel": "Fireship",
+      "published_at": "",
+      "views": 890000,
+      "likes": 56000,
+      "url": "https://www.youtube.com/results?search_query=DeepMind+Gemini+Nano+2：端侧多模态+A",
+      "source": "示例"
+    },
+    {
+      "rank": 8,
+      "id": "",
+      "title": "RAG 2.0 全栈实战：向量检索 + Agent Skill + 生产部署",
+      "description": "新一代 RAG 架构详解，混合检索、skill 工具链、准确率优化...",
+      "channel": "Data Independent",
+      "published_at": "",
+      "views": 760000,
+      "likes": 48000,
+      "url": "https://www.youtube.com/results?search_query=RAG+2.0+全栈实战：向量检索+++Agent+Skil",
+      "source": "示例"
+    },
+    {
+      "rank": 9,
+      "id": "",
+      "title": "Hermes 3：首个支持通用 Skill 执行的本地 Agent 模型",
+      "description": "NousResearch 最新模型支持原生 skill 调用，完整本地运行...",
+      "channel": "NousResearch",
+      "published_at": "",
+      "views": 650000,
+      "likes": 42000,
+      "url": "https://www.youtube.com/results?search_query=Hermes+3：首个支持通用+Skill+执行的本地+Ag",
+      "source": "示例"
+    },
+    {
+      "rank": 10,
+      "id": "",
+      "title": "vLLM 0.7 Speculative Decoding 实测：推理成本直降 40%",
+      "description": "vLLM 新版本的推测解码优化实测，包含 skill-aware 路由...",
+      "channel": "Weights & Biases",
+      "published_at": "",
+      "views": 540000,
+      "likes": 35000,
+      "url": "https://www.youtube.com/results?search_query=vLLM+0.7+Speculative+Decoding+",
+      "source": "示例"
+    },
+    {
+      "rank": 11,
+      "id": "",
+      "title": "AI Safety Eval 1.0：针对 Agent Skill 的安全评测标准",
+      "description": "介绍新的 agent skill 安全评测框架和已知漏洞类型...",
+      "channel": "Yannic Kilcher",
+      "published_at": "",
+      "views": 420000,
+      "likes": 28000,
+      "url": "https://www.youtube.com/results?search_query=AI+Safety+Eval+1.0：针对+Agent+Sk",
+      "source": "示例"
+    },
+    {
+      "rank": 12,
+      "id": "",
+      "title": "LangGraph 2.0 发布：原生 Skill 支持 + 可视化调试",
+      "description": "LangGraph 2.0 的新特性演示，skill 编排、实时监控、测试工具...",
+      "channel": "LangChain",
+      "published_at": "",
+      "views": 380000,
+      "likes": 24000,
+      "url": "https://www.youtube.com/results?search_query=LangGraph+2.0+发布：原生+Skill+支持++",
+      "source": "示例"
+    },
+    {
+      "rank": 13,
+      "id": "",
+      "title": "Edge AI 兴起：Skill 在手机/IoT 设备上执行的完整方案",
+      "description": "端侧 AI skill 执行的技术方案，含案例和性能基准...",
+      "channel": "Edge Impulse",
+      "published_at": "",
+      "views": 320000,
+      "likes": 20000,
+      "url": "https://www.youtube.com/results?search_query=Edge+AI+兴起：Skill+在手机/IoT+设备上执行",
+      "source": "示例"
+    },
+    {
+      "rank": 14,
+      "id": "",
+      "title": "AI Coding Agent 技能大赛回顾：500+ 开发者的 Skill 作品集",
+      "description": "盘点近期 AI coding agent skill 大赛的最佳作品...",
+      "channel": "DevPost",
+      "published_at": "",
+      "views": 280000,
+      "likes": 18000,
+      "url": "https://www.youtube.com/results?search_query=AI+Coding+Agent+技能大赛回顾：500++开发",
+      "source": "示例"
+    },
+    {
+      "rank": 15,
+      "id": "",
+      "title": "多模态 Skill 框架：视觉/音频/代码 Skill 自由组合编排",
+      "description": "Cohere 讲解多模态 skill 框架的设计和实现...",
+      "channel": "Cohere",
+      "published_at": "",
+      "views": 240000,
+      "likes": 15000,
+      "url": "https://www.youtube.com/results?search_query=多模态+Skill+框架：视觉/音频/代码+Skill+自由",
+      "source": "示例"
+    },
+    {
+      "rank": 16,
+      "id": "",
+      "title": "Groq On-Device LLM Runtime：本地执行 Skill 的毫秒级推理",
+      "description": "Groq 最新端侧推理引擎的性能实测和 skill 执行演示...",
+      "channel": "Groq",
+      "published_at": "",
+      "views": 210000,
+      "likes": 13000,
+      "url": "https://www.youtube.com/results?search_query=Groq+On-Device+LLM+Runtime：本地执",
+      "source": "示例"
+    },
+    {
+      "rank": 17,
+      "id": "",
+      "title": "HuggingFace Open LLM Leaderboard 新增 Skill 执行评分",
+      "description": "Open LLM Leaderboard 新增的 agent skill 执行能力维度解读...",
+      "channel": "Hugging Face",
+      "published_at": "",
+      "views": 180000,
+      "likes": 12000,
+      "url": "https://www.youtube.com/results?search_query=HuggingFace+Open+LLM+Leaderboa",
+      "source": "示例"
+    },
+    {
+      "rank": 18,
+      "id": "",
+      "title": "Copilot Studio Skill Marketplace 企业级部署指南",
+      "description": "微软 Copilot Studio 新 skill marketplace 的完整使用教程...",
+      "channel": "Microsoft Developer",
+      "published_at": "",
+      "views": 160000,
+      "likes": 10000,
+      "url": "https://www.youtube.com/results?search_query=Copilot+Studio+Skill+Marketpla",
+      "source": "示例"
+    },
+    {
+      "rank": 19,
+      "id": "",
+      "title": "AI Agent Observability 标准：Skill 追踪、审计、回滚实战",
+      "description": "生产环境中 AI agent skill 的可观测性最佳实践...",
+      "channel": "Weights & Biases",
+      "published_at": "",
+      "views": 140000,
+      "likes": 9000,
+      "url": "https://www.youtube.com/results?search_query=AI+Agent+Observability+标准：Skil",
+      "source": "示例"
+    },
+    {
+      "rank": 20,
+      "id": "",
+      "title": "DeepSeek V3 开源：高性能推理 + Skill 执行实测",
+      "description": "DeepSeek 最新版本的技术评测和 skill 执行实测...",
+      "channel": "AI Explained",
+      "published_at": "",
+      "views": 120000,
+      "likes": 8000,
+      "url": "https://www.youtube.com/results?search_query=DeepSeek+V3+开源：高性能推理+++Skill+执",
+      "source": "示例"
+    }
+  ],
+  "facebook": [
+    {
+      "rank": 1,
+      "author": "OpenAI",
+      "text": "Introducing GPT-5: our most capable model yet. GPT-5 brings native multimodal reasoning, 128K context, and a new coding agent that can build entire projects from a single prompt. Available today for ChatGPT Plus and API users.",
+      "likes": 48200,
+      "comments": 3150,
+      "shares": 8700,
+      "url": "https://mbasic.facebook.com/OpenAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 2,
+      "author": "DeepMind",
+      "text": "Our latest research: Gemini 2.5 Pro achieves state-of-the-art on 30+ benchmarks. New advances in long-context reasoning, scientific discovery, and multimodal understanding. Read the full paper on arXiv.",
+      "likes": 31500,
+      "comments": 2100,
+      "shares": 6400,
+      "url": "https://mbasic.facebook.com/DeepMind",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 3,
+      "author": "AnthropicAI",
+      "text": "Claude 4 Opus is here — our most intelligent model, now with extended thinking, computer use, and tool use capabilities. Claude can now manage multi-step workflows, run code, and reason through complex tasks autonomously.",
+      "likes": 27800,
+      "comments": 2800,
+      "shares": 5900,
+      "url": "https://mbasic.facebook.com/AnthropicAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 4,
+      "author": "MetaAILabs",
+      "text": "Llama 4 is now open-source and available for download. With 405B parameters, vision capabilities, and 256K context window — the most powerful open model ever released. Fine-tune it, deploy it, build with it.",
+      "likes": 35100,
+      "comments": 3400,
+      "shares": 12200,
+      "url": "https://mbasic.facebook.com/MetaAILabs",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 5,
+      "author": "GoogleAI",
+      "text": "Project Astra: your AI assistant that can see, hear, and help in real-time. Today we're opening the API to all developers. Build multimodal AI agents that understand the world through your camera.",
+      "likes": 19600,
+      "comments": 1800,
+      "shares": 4300,
+      "url": "https://mbasic.facebook.com/GoogleAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 6,
+      "author": "AIatMicrosoft",
+      "text": "Microsoft Copilot Studio: create custom AI agents for your enterprise — no code required. Connect to your data, define workflows, and deploy intelligent agents that handle customer support, HR, and IT tasks.",
+      "likes": 15300,
+      "comments": 1200,
+      "shares": 3800,
+      "url": "https://mbasic.facebook.com/AIatMicrosoft",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 7,
+      "author": "OpenAI",
+      "text": "DevDay 2026 Recap: Realtime API, new fine-tuning tiers, Structured Outputs GA, and the Agents SDK. Building AI agents just got 10x easier. Watch the full keynote replay on our YouTube channel.",
+      "likes": 22400,
+      "comments": 1950,
+      "shares": 5100,
+      "url": "https://mbasic.facebook.com/OpenAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 8,
+      "author": "DeepMind",
+      "text": "AlphaFold 4 predicts protein interactions with near-experimental accuracy. We've open-sourced the model weights and the full training dataset. Drug discovery will never be the same.",
+      "likes": 26700,
+      "comments": 2200,
+      "shares": 7800,
+      "url": "https://mbasic.facebook.com/DeepMind",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 9,
+      "author": "MetaAILabs",
+      "text": "PyTorch 3.0 is here with native distributed training, 4-bit quantization, and the new torch.compile v2 — 3x faster training out of the box. The future of open-source ML infrastructure.",
+      "likes": 18900,
+      "comments": 1600,
+      "shares": 4500,
+      "url": "https://mbasic.facebook.com/MetaAILabs",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 10,
+      "author": "AnthropicAI",
+      "text": "Responsible Scaling Policy update: we've audited Claude 4's capabilities against our ASL-4 threat model. New evaluations show significant improvements in safety without compromising capability. Full report on our website.",
+      "likes": 11200,
+      "comments": 980,
+      "shares": 2600,
+      "url": "https://mbasic.facebook.com/AnthropicAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 11,
+      "author": "GoogleAI",
+      "text": "Gemma 3: our most efficient open model family. From 2B to 70B parameters, optimized for on-device, edge, and cloud deployment. Includes new safety classifiers and instruction-tuned variants.",
+      "likes": 16400,
+      "comments": 1350,
+      "shares": 4100,
+      "url": "https://mbasic.facebook.com/GoogleAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 12,
+      "author": "AIatMicrosoft",
+      "text": "GitHub Copilot now supports multi-file editing, autonomous code review, and our new Copilot Workspace for planning complex tasks. Shipping faster with AI that understands your entire codebase.",
+      "likes": 14700,
+      "comments": 1100,
+      "shares": 3500,
+      "url": "https://mbasic.facebook.com/AIatMicrosoft",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 13,
+      "author": "OpenAI",
+      "text": "Sora is now available to all users — generate cinematic-quality videos from text. New features include scene editing, audio generation, and 1080p output. Create AI-powered stories like never before.",
+      "likes": 38500,
+      "comments": 4200,
+      "shares": 9100,
+      "url": "https://mbasic.facebook.com/OpenAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 14,
+      "author": "DeepMind",
+      "text": "Gemini Nano is now running on over 200 million Android devices. On-device AI for smart replies, summarization, and real-time translation — all without sending data to the cloud.",
+      "likes": 13800,
+      "comments": 950,
+      "shares": 2800,
+      "url": "https://mbasic.facebook.com/DeepMind",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 15,
+      "author": "MetaAILabs",
+      "text": "Segment Anything 2 (SAM 2) is out — real-time object segmentation in video. Track any object across frames with zero-shot泛化能力. Open weights, open dataset, open research.",
+      "likes": 21300,
+      "comments": 1700,
+      "shares": 5600,
+      "url": "https://mbasic.facebook.com/MetaAILabs",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 16,
+      "author": "AnthropicAI",
+      "text": "Claude Skills: composable, reusable capabilities you can share across teams. Define a skill once — coding, research, data analysis — and plug it into any Claude workflow. Community skill library launching next month.",
+      "likes": 9800,
+      "comments": 850,
+      "shares": 2100,
+      "url": "https://mbasic.facebook.com/AnthropicAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 17,
+      "author": "GoogleAI",
+      "text": "Veo 2 video generation is available in public preview. Create 4K, 60fps video clips with physics-aware rendering and consistent character identity. API access opens to all developers this quarter.",
+      "likes": 17500,
+      "comments": 1400,
+      "shares": 3900,
+      "url": "https://mbasic.facebook.com/GoogleAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 18,
+      "author": "AIatMicrosoft",
+      "text": "Azure AI Foundry: your one-stop platform for building, evaluating, and deploying enterprise AI applications. Now supports 1,800+ models, built-in RAG, and end-to-end monitoring.",
+      "likes": 12100,
+      "comments": 920,
+      "shares": 2900,
+      "url": "https://mbasic.facebook.com/AIatMicrosoft",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 19,
+      "author": "OpenAI",
+      "text": "Operator is now generally available — your AI agent that browses the web, fills forms, books flights, and manages tasks autonomously. Built-in guardrails let you review before any action is taken.",
+      "likes": 29300,
+      "comments": 3600,
+      "shares": 7200,
+      "url": "https://mbasic.facebook.com/OpenAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 20,
+      "author": "MetaAILabs",
+      "text": "NoVA (No Video Artifacts): our new image generation model that creates photorealistic images with zero visual artifacts. Better than DALL-E 3 on human preference evaluations. Weights on Hugging Face.",
+      "likes": 14200,
+      "comments": 1100,
+      "shares": 3400,
+      "url": "https://mbasic.facebook.com/MetaAILabs",
+      "platform": "facebook",
+      "source": "示例"
+    }
+  ]
 }

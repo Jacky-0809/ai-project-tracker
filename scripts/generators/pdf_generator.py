@@ -108,6 +108,33 @@ def _build_youtube_table(items, styles):
     return table
 
 
+def _build_facebook_table(items, styles):
+    data = [["#", "Page", "Content", "Likes"]]
+    for it in items:
+        text = it.get("text", "").replace("\n", " ")
+        if len(text) > 60:
+            text = text[:60] + "…"
+        likes = it.get("likes", 0)
+        data.append([
+            str(it.get("rank", "")),
+            it.get("page_name", it.get("author", "")),
+            text,
+            f"{likes:,}",
+        ])
+    table = Table(data, colWidths=[8 * mm, 35 * mm, 95 * mm, 22 * mm])
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#1877f2")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, 0), 10),
+        ("FONTSIZE", (0, 1), (-1, -1), 8.5),
+        ("GRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#e0e6ee")),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f8fafd")]),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+    ]))
+    return table
+
+
 def generate_pdf(path, date, data, config):
     """Generate a PDF report at the given path."""
     ensure_dir(path.rsplit("/", 1)[0])
@@ -124,7 +151,7 @@ def generate_pdf(path, date, data, config):
 
     story.append(Paragraph(f"🤖 AI 项目 / AI Skill 每日排行榜", styles["Title"]))
     story.append(Paragraph(
-        f"日期：{date}　·　数据来源：GitHub / X / YouTube　·　Top {top_n}",
+        f"日期：{date}　·　数据来源：GitHub / X / YouTube / Facebook　·　Top {top_n}",
         styles["Small"],
     ))
     story.append(Spacer(1, 8))
@@ -156,6 +183,15 @@ def generate_pdf(path, date, data, config):
         story.append(_build_youtube_table(yt, styles))
     else:
         story.append(Paragraph("暂无数据（需配置 YOUTUBE_API_KEY）", styles["BodyText"]))
+    story.append(Spacer(1, 6))
+
+    # Facebook
+    fb = data.get("facebook", [])
+    story.append(Paragraph(f"Facebook · AI 动态 Top {top_n}", styles["SectionTitle"]))
+    if fb:
+        story.append(_build_facebook_table(fb, styles))
+    else:
+        story.append(Paragraph("暂无数据（公开页面抓取受限）", styles["BodyText"]))
 
     doc.build(story)
     return path
@@ -174,6 +210,8 @@ if __name__ == "__main__":
                "replies": 20, "url": "https://x.com/test"}],
         "youtube": [{"rank": 1, "title": "Test AI Video", "channel": "Test Channel",
                      "description": "desc", "views": 100000, "url": "https://youtube.com"}],
+        "facebook": [{"rank": 1, "page_name": "OpenAI", "text": "New AI project released!",
+                      "likes": 5000, "comments": 200, "url": "https://facebook.com/OpenAI"}],
     }
     generate_pdf("/tmp/test_report.pdf", "2026-09-04", test_data, cfg)
     print("PDF written: /tmp/test_report.pdf")
