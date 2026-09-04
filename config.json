@@ -1,0 +1,11 @@
+{
+  "top_n": 20,
+  "languages": ["Python", "TypeScript", "JavaScript"],
+  "keywords": ["ai", "agent", "skill", "llm", "gpt", "ai-agent", "ai-skill", "opencode"],
+  "output_site": "site",
+  "timezone": "Asia/Shanghai",
+  "github": {
+    "min_stars": 50,
+    "pushed_days": 14
+  }
+}
