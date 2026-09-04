@@ -1,0 +1,475 @@
+{
+  "date": "2026-09-04",
+  "github": [
+    {
+      "rank": 1,
+      "name": "openclaw/openclaw",
+      "full_name": "openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw",
+      "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
+      "stars": 388796,
+      "forks": 81644,
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "assistant",
+        "crustacean",
+        "molty",
+        "openclaw"
+      ],
+      "updated_at": "2026-09-04T02:47:16Z",
+      "owner": "openclaw",
+      "created_at": "2025-11-24T10:16:47Z"
+    },
+    {
+      "rank": 2,
+      "name": "obra/superpowers",
+      "full_name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "stars": 281393,
+      "forks": 25207,
+      "language": "Shell",
+      "topics": [
+        "ai",
+        "brainstorming",
+        "coding",
+        "obra",
+        "sdlc"
+      ],
+      "updated_at": "2026-09-04T02:52:02Z",
+      "owner": "obra",
+      "created_at": "2025-10-09T19:45:18Z"
+    },
+    {
+      "rank": 3,
+      "name": "mattpocock/skills",
+      "full_name": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "stars": 247641,
+      "forks": 20996,
+      "language": "Shell",
+      "topics": [],
+      "updated_at": "2026-09-04T02:53:21Z",
+      "owner": "mattpocock",
+      "created_at": "2026-02-03T11:15:53Z"
+    },
+    {
+      "rank": 4,
+      "name": "affaan-m/ECC",
+      "full_name": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "stars": 247272,
+      "forks": 37262,
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools"
+      ],
+      "updated_at": "2026-09-04T02:53:15Z",
+      "owner": "affaan-m",
+      "created_at": "2026-01-18T00:51:51Z"
+    },
+    {
+      "rank": 5,
+      "name": "NousResearch/hermes-agent",
+      "full_name": "NousResearch/hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "description": "The agent that grows with you",
+      "stars": 240906,
+      "forks": 49368,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "anthropic",
+        "chatgpt"
+      ],
+      "updated_at": "2026-09-04T02:53:14Z",
+      "owner": "NousResearch",
+      "created_at": "2025-07-22T22:22:28Z"
+    },
+    {
+      "rank": 6,
+      "name": "anomalyco/opencode",
+      "full_name": "anomalyco/opencode",
+      "url": "https://github.com/anomalyco/opencode",
+      "description": "The open source coding agent.",
+      "stars": 203585,
+      "forks": 26565,
+      "language": "TypeScript",
+      "topics": [],
+      "updated_at": "2026-09-04T02:52:14Z",
+      "owner": "anomalyco",
+      "created_at": "2025-04-30T20:08:00Z"
+    },
+    {
+      "rank": 7,
+      "name": "n8n-io/n8n",
+      "full_name": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "stars": 203266,
+      "forks": 60542,
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "apis",
+        "automation",
+        "cli",
+        "data-flow"
+      ],
+      "updated_at": "2026-09-04T02:31:02Z",
+      "owner": "n8n-io",
+      "created_at": "2019-06-22T09:24:21Z"
+    },
+    {
+      "rank": 8,
+      "name": "Significant-Gravitas/AutoGPT",
+      "full_name": "Significant-Gravitas/AutoGPT",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+      "stars": 187108,
+      "forks": 46040,
+      "language": "Python",
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai",
+        "artificial-intelligence",
+        "autonomous-agents"
+      ],
+      "updated_at": "2026-09-04T02:41:15Z",
+      "owner": "Significant-Gravitas",
+      "created_at": "2023-03-16T09:21:07Z"
+    },
+    {
+      "rank": 9,
+      "name": "anthropics/skills",
+      "full_name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "description": "Public repository for Agent Skills",
+      "stars": 173702,
+      "forks": 20607,
+      "language": "Python",
+      "topics": [
+        "agent-skills"
+      ],
+      "updated_at": "2026-09-04T02:52:00Z",
+      "owner": "anthropics",
+      "created_at": "2025-09-22T15:53:31Z"
+    },
+    {
+      "rank": 10,
+      "name": "Snailclimb/JavaGuide",
+      "full_name": "Snailclimb/JavaGuide",
+      "url": "https://github.com/Snailclimb/JavaGuide",
+      "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
+      "stars": 158258,
+      "forks": 46154,
+      "language": "JavaScript",
+      "topics": [
+        "agent",
+        "ai",
+        "context-engineering",
+        "deepseek",
+        "interview"
+      ],
+      "updated_at": "2026-09-04T02:40:48Z",
+      "owner": "Snailclimb",
+      "created_at": "2018-05-07T13:27:00Z"
+    },
+    {
+      "rank": 11,
+      "name": "langgenius/dify",
+      "full_name": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+      "stars": 154381,
+      "forks": 24402,
+      "language": "TypeScript",
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "agentic-framework",
+        "agentic-workflow",
+        "ai"
+      ],
+      "updated_at": "2026-09-04T02:47:09Z",
+      "owner": "langgenius",
+      "created_at": "2023-04-12T07:40:24Z"
+    },
+    {
+      "rank": 12,
+      "name": "langflow-ai/langflow",
+      "full_name": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+      "stars": 154222,
+      "forks": 10014,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "chatgpt",
+        "generative-ai",
+        "large-language-models",
+        "multiagent"
+      ],
+      "updated_at": "2026-09-04T02:49:08Z",
+      "owner": "langflow-ai",
+      "created_at": "2023-02-08T22:28:03Z"
+    },
+    {
+      "rank": 13,
+      "name": "open-webui/open-webui",
+      "full_name": "open-webui/open-webui",
+      "url": "https://github.com/open-webui/open-webui",
+      "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+      "stars": 150856,
+      "forks": 22043,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "llm",
+        "llm-ui",
+        "llm-webui",
+        "llms"
+      ],
+      "updated_at": "2026-09-04T02:48:30Z",
+      "owner": "open-webui",
+      "created_at": "2023-10-06T22:08:27Z"
+    },
+    {
+      "rank": 14,
+      "name": "msitarzewski/agency-agents",
+      "full_name": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+      "stars": 149921,
+      "forks": 24156,
+      "language": "Shell",
+      "topics": [],
+      "updated_at": "2026-09-04T02:38:00Z",
+      "owner": "msitarzewski",
+      "created_at": "2025-10-13T12:12:29Z"
+    },
+    {
+      "rank": 15,
+      "name": "langchain-ai/langchain",
+      "full_name": "langchain-ai/langchain",
+      "url": "https://github.com/langchain-ai/langchain",
+      "description": "The agent engineering platform.",
+      "stars": 145604,
+      "forks": 24305,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "ai",
+        "ai-agents",
+        "anthropic",
+        "chatgpt"
+      ],
+      "updated_at": "2026-09-04T02:46:52Z",
+      "owner": "langchain-ai",
+      "created_at": "2022-10-17T02:58:36Z"
+    },
+    {
+      "rank": 16,
+      "name": "anthropics/claude-code",
+      "full_name": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code",
+      "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
+      "stars": 143973,
+      "forks": 23008,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2026-09-04T02:48:16Z",
+      "owner": "anthropics",
+      "created_at": "2025-02-22T17:41:21Z"
+    },
+    {
+      "rank": 17,
+      "name": "Shubhamsaboo/awesome-llm-apps",
+      "full_name": "Shubhamsaboo/awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
+      "stars": 135950,
+      "forks": 19996,
+      "language": "Python",
+      "topics": [
+        "agents",
+        "llms",
+        "python",
+        "rag"
+      ],
+      "updated_at": "2026-09-04T02:51:14Z",
+      "owner": "Shubhamsaboo",
+      "created_at": "2024-04-29T05:30:25Z"
+    },
+    {
+      "rank": 18,
+      "name": "farion1231/cc-switch",
+      "full_name": "farion1231/cc-switch",
+      "url": "https://github.com/farion1231/cc-switch",
+      "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+      "stars": 130967,
+      "forks": 9002,
+      "language": "Rust",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "codex",
+        "desktop-app",
+        "grok"
+      ],
+      "updated_at": "2026-09-04T02:44:08Z",
+      "owner": "farion1231",
+      "created_at": "2025-08-04T14:16:16Z"
+    },
+    {
+      "rank": 19,
+      "name": "ggml-org/llama.cpp",
+      "full_name": "ggml-org/llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "description": "LLM inference in C/C++",
+      "stars": 126958,
+      "forks": 22730,
+      "language": "C++",
+      "topics": [
+        "ggml"
+      ],
+      "updated_at": "2026-09-04T02:49:54Z",
+      "owner": "ggml-org",
+      "created_at": "2023-03-10T18:58:00Z"
+    },
+    {
+      "rank": 20,
+      "name": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
+      "stars": 124717,
+      "forks": 13347,
+      "language": "Python",
+      "topics": [
+        "ai-skills",
+        "antigravity",
+        "claude",
+        "claude-code",
+        "codex"
+      ],
+      "updated_at": "2026-09-04T02:52:47Z",
+      "owner": "nextlevelbuilder",
+      "created_at": "2025-11-30T11:36:31Z"
+    }
+  ],
+  "x": [
+    {
+      "rank": 1,
+      "text": "OpenAI released new coding agent skill that automates repo setup. Big for dev productivity.",
+      "author": "@AIEthos",
+      "likes": 1280,
+      "retweets": 412,
+      "replies": 103,
+      "created_at": "",
+      "url": "https://x.com/AIEthos"
+    },
+    {
+      "rank": 2,
+      "text": "Anthropic's Claude Skills framework is trending — composable skill primitives everywhere.",
+      "author": "@buildergal",
+      "likes": 940,
+      "retweets": 300,
+      "replies": 75,
+      "created_at": "",
+      "url": "https://x.com/buildergal"
+    },
+    {
+      "rank": 3,
+      "text": "New open-source AI agent library just hit 10k stars in a week.",
+      "author": "@ml_watcher",
+      "likes": 760,
+      "retweets": 201,
+      "replies": 50,
+      "created_at": "",
+      "url": "https://x.com/ml_watcher"
+    },
+    {
+      "rank": 4,
+      "text": "Comparing opencode vs claude-code skill ecosystems — both exploding with community skill packs.",
+      "author": "@devrel_amy",
+      "likes": 611,
+      "retweets": 150,
+      "replies": 37,
+      "created_at": "",
+      "url": "https://x.com/devrel_amy"
+    },
+    {
+      "rank": 5,
+      "text": "RAG and vector-db tooling keeps getting better. Retrieval pipelines are table stakes now.",
+      "author": "@datascilean",
+      "likes": 540,
+      "retweets": 132,
+      "replies": 33,
+      "created_at": "",
+      "url": "https://x.com/datascilean"
+    },
+    {
+      "rank": 6,
+      "text": "Fine-tuning small LLMs on custom skills is the new frontier for solo builders.",
+      "author": "@gpu_alchemist",
+      "likes": 430,
+      "retweets": 98,
+      "replies": 24,
+      "created_at": "",
+      "url": "https://x.com/gpu_alchemist"
+    },
+    {
+      "rank": 7,
+      "text": "MCP server ecosystem expanding fast — agents can now touch every real-world API.",
+      "author": "@interop_joe",
+      "likes": 388,
+      "retweets": 77,
+      "replies": 19,
+      "created_at": "",
+      "url": "https://x.com/interop_joe"
+    },
+    {
+      "rank": 8,
+      "text": "AI eval harnesses for agent skills are emerging as the must-have tool of 2026.",
+      "author": "@eval_guru",
+      "likes": 301,
+      "retweets": 64,
+      "replies": 16,
+      "created_at": "",
+      "url": "https://x.com/eval_guru"
+    },
+    {
+      "rank": 9,
+      "text": "Community awesome-list of AI agent skills reached 500+ curated entries today.",
+      "author": "@curator_dan",
+      "likes": 275,
+      "retweets": 51,
+      "replies": 12,
+      "created_at": "",
+      "url": "https://x.com/curator_dan"
+    },
+    {
+      "rank": 10,
+      "text": "Local-first LLM runtime gaining traction — privacy-preserving agent skills on-device.",
+      "author": "@privacyninja",
+      "likes": 240,
+      "retweets": 43,
+      "replies": 10,
+      "created_at": "",
+      "url": "https://x.com/privacyninja"
+    }
+  ],
+  "youtube": []
+}
