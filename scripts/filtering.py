@@ -279,7 +279,7 @@ def _engagement_norm(value):
     return min(math.log(value + 1) / math.log(10000), 1.0)
 
 
-def _freshness(ts, platform):
+def _freshness(ts, platform, half_life=None):
     """Return 0-1 recency score from an ISO timestamp, platform-tailored.
 
     A recently-updated GitHub repo or recently-published X/YouTube post scores
@@ -295,11 +295,9 @@ def _freshness(ts, platform):
     now = datetime.datetime.now(datetime.timezone.utc)
     age_days = max(0.0, (now - dt).total_seconds() / 86400.0)
 
-    if platform == "github":
-        # repos: active within ~30 days == trending; older decays
-        return max(0.0, 1.0 - age_days / 45.0)
-    # social posts (x/youtube/facebook): hot within days, decay fast
-    return max(0.0, 1.0 - age_days / 14.0)
+    if half_life is None:
+        half_life = 45 if platform == "github" else 14
+    return max(0.0, 1.0 - age_days / (half_life * 2))
 
 
 def _parse_iso(ts):
@@ -368,8 +366,10 @@ def _compute_momentum(item):
     if platform == "github" and age_days is not None:
         # Velocity = stars per day (higher = faster rising)
         stars = item.get("stars", 0)
-        velocity = min(stars / age_days, 1000.0)  # cap at 1000 stars/day
-        velocity_norm = min(velocity / 100.0, 1.0)  # normalize: 100 stars/day = 1.0
+        velocity = stars / age_days
+        # Logarithmic normalization: log(velocity+1) / log(100) = 1.0 at 99 stars/day
+        import math
+        velocity_norm = min(math.log(velocity + 1) / math.log(100), 1.0)
     else:
         # Social platforms: use engagement + recency
         engagement = _engagement_norm(_engagement(item))
@@ -377,8 +377,12 @@ def _compute_momentum(item):
         velocity_norm = engagement * 0.6 + freshness * 0.4
 
     # ---- Momentum score = velocity (primary) + freshness (secondary) ----
-    freshness = _freshness(created, platform)
-    momentum = velocity_norm * 0.70 + freshness * 0.30
+    # For GitHub: use longer half-life (180 days) since repos are long-lived
+    if platform == "github":
+        freshness = _freshness(created, platform, half_life=180)
+    else:
+        freshness = _freshness(created, platform)
+    momentum = velocity_norm * 0.65 + freshness * 0.35
     item["momentum_score"] = round(momentum, 4)
     item["velocity"] = round(velocity if platform == "github" else velocity_norm, 2)
 
