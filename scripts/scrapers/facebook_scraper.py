@@ -194,6 +194,16 @@ def scrape_facebook_top(config, top_n=20):
                 "platform": "facebook",
                 "source": "live",
             })
+
+        # If live scraping yielded fewer than top_n, fill the remainder with
+        # clearly-marked example data so the section stays complete.
+        if len(results) < top_n:
+            for it in _fallback_data(top_n):
+                if len(results) >= top_n:
+                    break
+                it["rank"] = len(results) + 1
+                results.append(it)
+
         return results
 
     except Exception:
