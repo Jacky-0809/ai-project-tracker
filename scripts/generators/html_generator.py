@@ -1,7 +1,90 @@
 """HTML report generator for the daily AI project report."""
 import html as html_mod
-from utils.helpers import ensure_dir
 
+# The daily report is a fully self-contained page: we inline the stylesheet so it
+# renders correctly regardless of where it is opened (GitHub Pages, file://, etc.)
+REPORT_CSS = """* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f4f6f9; color: #2d3340; line-height: 1.55; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+header { background: linear-gradient(135deg, #1e90ff, #6a5ae0); color: #fff; padding: 30px 0; margin-bottom: 24px; }
+header h1 { font-size: 25px; margin-bottom: 6px; letter-spacing: .5px; }
+header .date { opacity: .92; font-size: 14px; }
+nav { background: #fff; padding: 10px 0; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 10; }
+nav a { color: #1e90ff; text-decoration: none; margin-right: 18px; font-weight: 500; }
+nav a:hover { text-decoration: underline; }
+.card { background: #fff; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.07); border-top: 4px solid #e3e8f0; }
+.card h2 { font-size: 19px; color: #1b2430; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.card h2 .src-hint { margin-left: auto; font-size: 12px; font-weight: 400; color: #8a94a6; }
+
+/* ---- platform accents ---- */
+.card.github  { border-top-color: #24292e; }
+.card.x       { border-top-color: #1da1f2; }
+.card.youtube { border-top-color: #ff0000; }
+.card.facebook{ border-top-color: #1877f2; }
+
+.platform-badge { display: inline-block; padding: 3px 11px; border-radius: 16px; font-size: 12px; font-weight: 600; color: #fff; }
+.badge-github { background: #24292e; }
+.badge-x { background: #1da1f2; }
+.badge-youtube { background: #ff0000; }
+.badge-facebook { background: #1877f2; }
+
+/* ---- summary stat cards ---- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.stat { display: flex; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #edf1f7; border-radius: 10px; padding: 14px 16px; }
+.stat .ic { font-size: 26px; }
+.stat b { display: block; font-size: 22px; color: #1e90ff; line-height: 1.1; }
+.stat span { font-size: 12px; color: #6b7686; }
+.stat.note { grid-column: 1 / -1; background: #fffbe9; border-color: #f5e9b8; }
+.stat.note span { color: #8a6d1a; }
+
+/* ---- data table (4 columns) ---- */
+.table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; table-layout: fixed; }
+.data-table th { text-align: left; padding: 10px 12px; font-size: 12px; font-weight: 600; color: #fff; letter-spacing: .3px; border: none; }
+.data-table thead.github th { background: #24292e; }
+.data-table thead.x th { background: #1da1f2; }
+.data-table thead.youtube th { background: #ff0000; }
+.data-table thead.facebook th { background: #1877f2; }
+.data-table td { padding: 11px 12px; border-bottom: 1px solid #eef1f6; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+.data-table tbody tr:nth-child(even) { background: #fafbfe; }
+.data-table tbody tr:hover { background: #eef4ff; }
+
+/* column widths (sum to 100%) */
+.col-rank { width: 5%; text-align: center; font-weight: 700; color: #1e90ff; }
+.col-title { width: 25%; font-weight: 600; }
+.col-desc  { width: 45%; color: #4a5465; }
+.col-author{ width: 12%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #5a6475; }
+.col-heat  { width: 13%; white-space: nowrap; color: #444c59; font-variant-numeric: tabular-nums; }
+
+.data-table .col-title a { color: #1a73e8; text-decoration: none; word-break: break-word; }
+.data-table .col-title a:hover { text-decoration: underline; }
+
+/* example vs live */
+.row-example { opacity: .62; }
+.row-example td { background-image: linear-gradient(90deg, rgba(0,0,0,0) 0, rgba(0,0,0,.05) 900px); }
+.tag-example { display: inline-block; background: #f0f2f7; color: #8a94a6; border: 1px solid #e2e6ee; border-radius: 4px; font-size: 11px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; font-weight: 400; }
+
+.heat-stars { color: #eab308; font-weight: 700; }
+.heat-likes { color: #e0245e; font-weight: 700; }
+.heat-views { color: #ff0000; font-weight: 700; }
+.heat-heat  { color: #1e90ff; font-weight: 700; }
+
+.empty { color: #8a94a6; font-size: 13px; padding: 12px 0; }
+
+footer { text-align: center; padding: 26px 0; color: #9aa3b2; font-size: 13px; }
+.report-links { margin-bottom: 16px; }
+.btn { display: inline-block; padding: 9px 18px; background: #1e90ff; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; }
+.btn:hover { background: #0073d6; }
+.btn-secondary { background: #6a5ae0; }
+.btn-secondary:hover { background: #5a49cf; }
+
+@media (max-width: 720px) {
+  .col-title { width: 32%; }
+  .col-desc  { width: 40%; }
+  .col-author{ display: none; }
+}
+@media print { nav, footer, .report-links { display: none; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #eee; } }
+"""
 
 def _esc(text):
     """Escape HTML special characters."""
@@ -10,10 +93,24 @@ def _esc(text):
     return html_mod.escape(str(text))
 
 
-def _table_header():
-    """Return the 4-column table header row."""
-    return """<table class="data-table">
-    <thead>
+def _fmt_num(n):
+    """Format a number with thousands separators."""
+    try:
+        return f"{int(n):,}"
+    except (TypeError, ValueError):
+        return "N/A"
+
+
+def _truncate(text, limit=140):
+    if not text:
+        return ""
+    text = " ".join(str(text).split())
+    return text[:limit] + ("…" if len(text) > limit else "")
+
+
+def _table_header(platform):
+    return f"""<table class="data-table">
+    <thead class="{platform}">
         <tr>
             <th class="col-rank">#</th>
             <th class="col-title">Title</th>
@@ -32,14 +129,14 @@ def _table_footer():
 def _render_github_section(items):
     if not items:
         return '<p class="empty">暂无 GitHub 数据（可检查 GITHUB_TOKEN 配额后重试）</p>'
-    rows = [_table_header()]
+    rows = [_table_header("github")]
     for it in items:
-        heat = f"<span class='heat-stars'>★</span> {it.get('stars', 0)}"
+        heat = f"<span class='heat-stars'>★</span> {_fmt_num(it.get('stars', 0))}"
         rows.append(f"""
         <tr>
             <td class="col-rank">{it['rank']}</td>
             <td class="col-title"><a href="{_esc(it['url'])}" target="_blank">{_esc(it['name'])}</a></td>
-            <td class="col-desc">{_esc(it.get('description') or '')[:300]}</td>
+            <td class="col-desc">{_esc(_truncate(it.get('description') or ''))}</td>
             <td class="col-author">{_esc(it.get('owner') or '')}</td>
             <td class="col-heat">{heat}</td>
         </tr>""")
@@ -50,19 +147,25 @@ def _render_github_section(items):
 def _render_x_section(items):
     if not items:
         return '<p class="empty">暂无 X 数据（需配置 X_BEARER_TOKEN）</p>'
-    rows = [_table_header()]
+    rows = [_table_header("x")]
+    seen_titles = set()
     for it in items:
-        text = (it.get("text") or "").replace("\n", " ")[:300]
+        text = (it.get("text") or "").replace("\n", " ")
         heat = (
-            f"<span class='heat-likes'>❤️</span> {it.get('likes', 0)}"
-            f"&nbsp;🔁 {it.get('retweets', 0)}"
+            f"<span class='heat-likes'>❤️</span> {_fmt_num(it.get('likes', 0))}"
+            f"&nbsp;🔁 {_fmt_num(it.get('retweets', 0))}"
         )
+        title = it.get("author") or ""
+        desc = _truncate(text, 200)
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+        tag = '<span class="tag-example">示例</span>' if src == "示例" else ""
         rows.append(f"""
-        <tr>
+        <tr{row_cls}>
             <td class="col-rank">{it['rank']}</td>
-            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('author') or it.get('text','')[:40])}</a></td>
-            <td class="col-desc">{_esc(text)}</td>
-            <td class="col-author">{_esc(it.get('author') or '')}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(title)}</a>{tag}</td>
+            <td class="col-desc">{_esc(desc)}</td>
+            <td class="col-author">{_esc(title)}</td>
             <td class="col-heat">{heat}</td>
         </tr>""")
     rows.append(_table_footer())
@@ -72,16 +175,19 @@ def _render_x_section(items):
 def _render_youtube_section(items):
     if not items:
         return '<p class="empty">暂无 YouTube 数据（需配置 YOUTUBE_API_KEY）</p>'
-    rows = [_table_header()]
+    rows = [_table_header("youtube")]
     for it in items:
         views = it.get("views", 0)
-        views_str = f"{views:,}" if views else "N/A"
+        views_str = _fmt_num(views) if views else "N/A"
         desc = it.get("description") or it.get("channel") or ""
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+        tag = '<span class="tag-example">示例</span>' if src == "示例" else ""
         rows.append(f"""
-        <tr>
+        <tr{row_cls}>
             <td class="col-rank">{it['rank']}</td>
-            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a></td>
-            <td class="col-desc">{_esc(desc)[:300]}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a>{tag}</td>
+            <td class="col-desc">{_esc(_truncate(desc))}</td>
             <td class="col-author">{_esc(it.get('channel') or '')}</td>
             <td class="col-heat"><span class='heat-views'>▶️</span> {views_str}</td>
         </tr>""")
@@ -92,18 +198,20 @@ def _render_youtube_section(items):
 def _render_facebook_section(items):
     if not items:
         return '<p class="empty">暂无 Facebook 数据（公开页面抓取受限）</p>'
-    rows = [_table_header()]
+    rows = [_table_header("facebook")]
     for it in items:
-        likes = it.get("likes", 0)
         author = it.get("page_name") or it.get("author", "")
-        title = author
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+        tag = '<span class="tag-example">示例</span>' if src == "示例" else ""
+        heat = f"<span class='heat-likes'>👍</span> {_fmt_num(it.get('likes', 0))}"
         rows.append(f"""
-        <tr>
+        <tr{row_cls}>
             <td class="col-rank">{it['rank']}</td>
-            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(title)}</a></td>
-            <td class="col-desc">{_esc(it.get('text') or '')[:300]}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(author)}</a>{tag}</td>
+            <td class="col-desc">{_esc(_truncate(it.get('text') or ''))}</td>
             <td class="col-author">{_esc(author)}</td>
-            <td class="col-heat"><span class='heat-likes'>👍</span> {likes:,}</td>
+            <td class="col-heat">{heat}</td>
         </tr>""")
     rows.append(_table_footer())
     return "\n".join(rows)
@@ -155,11 +263,38 @@ def generate_index_html(dates, config):
     return html_content
 
 
+def _build_summary(data):
+    counts = {
+        "github": len(data.get("github", [])),
+        "x": len(data.get("x", [])),
+        "youtube": len(data.get("youtube", [])),
+        "facebook": len(data.get("facebook", [])),
+    }
+    total = sum(counts.values())
+
+    def stat(ic, label, n):
+        return f"""<div class="stat">
+        <div class="ic">{ic}</div>
+        <div><b>{n}</b><span>{label}</span></div>
+    </div>"""
+
+    cards = "".join([
+        stat("🏆", "GitHub 仓库", counts["github"]),
+        stat("🐦", "X 讨论", counts["x"]),
+        stat("▶️", "YouTube 视频", counts["youtube"]),
+        stat("📘", "Facebook 帖子", counts["facebook"]),
+    ])
+    return f"""
+    <div class="stats">
+        {cards}
+        <div class="stat note"><div class="ic">ℹ️</div><div><span>共收录 <b>{total}</b> 条动态；GitHub 为实时数据，X/YouTube/Facebook 无密钥时展示示例数据（已淡化并标注）。</span></div></div>
+    </div>"""
+
+
 def generate_daily_html(date, data, config):
-    """Generate a single self-contained daily HTML report."""
+    """Generate a single self-contained daily HTML report (inline CSS)."""
     from utils.helpers import report_dir_name
     top_n = config.get("top_n", 20)
-    report_name = report_dir_name(date)
     github_html = _render_github_section(data.get("github", []))
     x_html = _render_x_section(data.get("x", []))
     youtube_html = _render_youtube_section(data.get("youtube", []))
@@ -173,7 +308,9 @@ def generate_daily_html(date, data, config):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 项目每日排行榜 · {date}</title>
-<link rel="stylesheet" href="../../../css/style.css">
+<style>
+{REPORT_CSS}
+</style>
 </head>
 <body>
 <header>
@@ -184,9 +321,8 @@ def generate_daily_html(date, data, config):
 </header>
 <nav>
     <div class="container">
-        <a href="../../../index.html">🏠 首页</a>
-        <a href="report.pdf">⬇ 下载 PDF</a>
         <a href="index.html">📄 本页</a>
+        <a href="report.pdf">⬇ 下载 PDF</a>
     </div>
 </nav>
 <main class="container">
@@ -199,51 +335,37 @@ def generate_daily_html(date, data, config):
         {summary}
     </div>
 
-    <div class="card">
-        <h2><span class="platform-badge badge-github">GitHub</span> AI 项目 Top {top_n}</h2>
+    <div class="card github">
+        <h2><span class="platform-badge badge-github">GitHub</span> AI 项目 Top {top_n}<span class="src-hint">实时</span></h2>
+        <div class="table-wrap">
         {github_html}
+        </div>
     </div>
 
-    <div class="card">
-        <h2><span class="platform-badge badge-x">X</span> AI 讨论 Top {top_n}</h2>
+    <div class="card x">
+        <h2><span class="platform-badge badge-x">X</span> AI 讨论 Top {top_n}<span class="src-hint">无密钥时为例外数据</span></h2>
+        <div class="table-wrap">
         {x_html}
+        </div>
     </div>
 
-    <div class="card">
-        <h2><span class="platform-badge badge-youtube">YouTube</span> AI 视频 Top {top_n}</h2>
+    <div class="card youtube">
+        <h2><span class="platform-badge badge-youtube">YouTube</span> AI 视频 Top {top_n}<span class="src-hint">无密钥时为例外数据</span></h2>
+        <div class="table-wrap">
         {youtube_html}
+        </div>
     </div>
 
-    <div class="card">
-        <h2><span class="platform-badge badge-facebook">Facebook</span> AI 动态 Top {top_n}</h2>
+    <div class="card facebook">
+        <h2><span class="platform-badge badge-facebook">Facebook</span> AI 动态 Top {top_n}<span class="src-hint">公开页面抓取</span></h2>
+        <div class="table-wrap">
         {facebook_html}
+        </div>
     </div>
 </main>
 <footer>
-    <div class="container">由 GitHub Actions 自动生成 · {date} · Powered by ai-project-tracker skill</div>
+    <div class="container">由 GitHub Actions 自动生成 · {date} · Powered by ai-project-tracker</div>
 </footer>
 </body>
 </html>
 """
-
-
-def _build_summary(data):
-    github, x, youtube, facebook = (
-        data.get("github", []), data.get("x", []),
-        data.get("youtube", []), data.get("facebook", []),
-    )
-    gh_str = f"<b>{len(github)}</b> 个仓库" if github else "无"
-    x_str = f"<b>{len(x)}</b> 条讨论" if x else "无"
-    yt_str = f"<b>{len(youtube)}</b> 个视频" if youtube else "无"
-    fb_str = f"<b>{len(facebook)}</b> 条帖子" if facebook else "无"
-    total = len(github) + len(x) + len(youtube) + len(facebook)
-    return f"""
-    <p>本次共收录 <b>{total}</b> 条 AI 动态：</p>
-    <ul>
-        <li>🏆 GitHub：收录 {gh_str}</li>
-        <li>🐦 X：收录 {x_str}</li>
-        <li>▶️ YouTube：收录 {yt_str}</li>
-        <li>📘 Facebook：收录 {fb_str}</li>
-    </ul>
-    <p>数据来源说明：GitHub 为实时 API 数据；X/YouTube/Facebook 可能为示例数据（需配置 API 密钥获取实时数据）。</p>
-    """

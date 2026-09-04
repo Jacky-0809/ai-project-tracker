@@ -7,7 +7,7 @@
       "full_name": "openclaw/openclaw",
       "url": "https://github.com/openclaw/openclaw",
       "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
-      "stars": 388800,
+      "stars": 388801,
       "forks": 81647,
       "language": "TypeScript",
       "topics": [
@@ -17,7 +17,7 @@
         "molty",
         "openclaw"
       ],
-      "updated_at": "2026-09-04T06:19:14Z",
+      "updated_at": "2026-09-04T06:28:51Z",
       "owner": "openclaw",
       "created_at": "2025-11-24T10:16:47Z"
     },
@@ -27,8 +27,8 @@
       "full_name": "obra/superpowers",
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
-      "stars": 281458,
-      "forks": 25212,
+      "stars": 281466,
+      "forks": 25213,
       "language": "Shell",
       "topics": [
         "ai",
@@ -37,7 +37,7 @@
         "obra",
         "sdlc"
       ],
-      "updated_at": "2026-09-04T06:12:02Z",
+      "updated_at": "2026-09-04T06:27:58Z",
       "owner": "obra",
       "created_at": "2025-10-09T19:45:18Z"
     },
@@ -47,11 +47,11 @@
       "full_name": "mattpocock/skills",
       "url": "https://github.com/mattpocock/skills",
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
-      "stars": 248012,
-      "forks": 21011,
+      "stars": 248047,
+      "forks": 21013,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T06:18:58Z",
+      "updated_at": "2026-09-04T06:29:43Z",
       "owner": "mattpocock",
       "created_at": "2026-02-03T11:15:53Z"
     },
@@ -61,8 +61,8 @@
       "full_name": "affaan-m/ECC",
       "url": "https://github.com/affaan-m/ECC",
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "stars": 247441,
-      "forks": 37289,
+      "stars": 247452,
+      "forks": 37290,
       "language": "JavaScript",
       "topics": [
         "ai-agents",
@@ -71,7 +71,7 @@
         "claude-code",
         "developer-tools"
       ],
-      "updated_at": "2026-09-04T06:18:48Z",
+      "updated_at": "2026-09-04T06:30:04Z",
       "owner": "affaan-m",
       "created_at": "2026-01-18T00:51:51Z"
     },
@@ -81,8 +81,8 @@
       "full_name": "NousResearch/hermes-agent",
       "url": "https://github.com/NousResearch/hermes-agent",
       "description": "The agent that grows with you",
-      "stars": 241024,
-      "forks": 49399,
+      "stars": 241026,
+      "forks": 49402,
       "language": "Python",
       "topics": [
         "ai",
@@ -91,7 +91,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T06:19:19Z",
+      "updated_at": "2026-09-04T06:29:29Z",
       "owner": "NousResearch",
       "created_at": "2025-07-22T22:22:28Z"
     },
@@ -101,11 +101,11 @@
       "full_name": "anomalyco/opencode",
       "url": "https://github.com/anomalyco/opencode",
       "description": "The open source coding agent.",
-      "stars": 203628,
-      "forks": 26572,
+      "stars": 203631,
+      "forks": 26573,
       "language": "TypeScript",
       "topics": [],
-      "updated_at": "2026-09-04T06:16:25Z",
+      "updated_at": "2026-09-04T06:26:55Z",
       "owner": "anomalyco",
       "created_at": "2025-04-30T20:08:00Z"
     },
@@ -115,7 +115,7 @@
       "full_name": "n8n-io/n8n",
       "url": "https://github.com/n8n-io/n8n",
       "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "stars": 203278,
+      "stars": 203279,
       "forks": 60543,
       "language": "TypeScript",
       "topics": [
@@ -125,7 +125,7 @@
         "cli",
         "data-flow"
       ],
-      "updated_at": "2026-09-04T06:14:13Z",
+      "updated_at": "2026-09-04T06:24:27Z",
       "owner": "n8n-io",
       "created_at": "2019-06-22T09:24:21Z"
     },
@@ -155,13 +155,13 @@
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
       "description": "Public repository for Agent Skills",
-      "stars": 173788,
-      "forks": 20612,
+      "stars": 173793,
+      "forks": 20611,
       "language": "Python",
       "topics": [
         "agent-skills"
       ],
-      "updated_at": "2026-09-04T06:18:50Z",
+      "updated_at": "2026-09-04T06:29:52Z",
       "owner": "anthropics",
       "created_at": "2025-09-22T15:53:31Z"
     },
@@ -192,7 +192,7 @@
       "url": "https://github.com/langgenius/dify",
       "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
       "stars": 154396,
-      "forks": 24405,
+      "forks": 24404,
       "language": "TypeScript",
       "topics": [
         "agent",
@@ -201,7 +201,7 @@
         "agentic-workflow",
         "ai"
       ],
-      "updated_at": "2026-09-04T06:11:07Z",
+      "updated_at": "2026-09-04T06:26:22Z",
       "owner": "langgenius",
       "created_at": "2023-04-12T07:40:24Z"
     },
@@ -231,7 +231,7 @@
       "full_name": "open-webui/open-webui",
       "url": "https://github.com/open-webui/open-webui",
       "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-      "stars": 150866,
+      "stars": 150868,
       "forks": 22042,
       "language": "Python",
       "topics": [
@@ -241,7 +241,7 @@
         "llm-webui",
         "llms"
       ],
-      "updated_at": "2026-09-04T06:12:18Z",
+      "updated_at": "2026-09-04T06:30:07Z",
       "owner": "open-webui",
       "created_at": "2023-10-06T22:08:27Z"
     },
@@ -251,11 +251,11 @@
       "full_name": "msitarzewski/agency-agents",
       "url": "https://github.com/msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
-      "stars": 149948,
-      "forks": 24160,
+      "stars": 149950,
+      "forks": 24161,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T06:15:24Z",
+      "updated_at": "2026-09-04T06:20:32Z",
       "owner": "msitarzewski",
       "created_at": "2025-10-13T12:12:29Z"
     },
@@ -285,11 +285,11 @@
       "full_name": "anthropics/claude-code",
       "url": "https://github.com/anthropics/claude-code",
       "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
-      "stars": 143986,
+      "stars": 143987,
       "forks": 23010,
       "language": "Python",
       "topics": [],
-      "updated_at": "2026-09-04T06:06:02Z",
+      "updated_at": "2026-09-04T06:22:49Z",
       "owner": "anthropics",
       "created_at": "2025-02-22T17:41:21Z"
     },
@@ -318,7 +318,7 @@
       "full_name": "farion1231/cc-switch",
       "url": "https://github.com/farion1231/cc-switch",
       "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
-      "stars": 130984,
+      "stars": 130985,
       "forks": 9006,
       "language": "Rust",
       "topics": [
@@ -328,7 +328,7 @@
         "desktop-app",
         "grok"
       ],
-      "updated_at": "2026-09-04T06:10:54Z",
+      "updated_at": "2026-09-04T06:30:06Z",
       "owner": "farion1231",
       "created_at": "2025-08-04T14:16:16Z"
     },
@@ -339,7 +339,7 @@
       "url": "https://github.com/ggml-org/llama.cpp",
       "description": "LLM inference in C/C++",
       "stars": 126983,
-      "forks": 22741,
+      "forks": 22740,
       "language": "C++",
       "topics": [
         "ggml"
@@ -354,8 +354,8 @@
       "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
-      "stars": 124761,
-      "forks": 13360,
+      "stars": 124767,
+      "forks": 13364,
       "language": "Python",
       "topics": [
         "ai-skills",
@@ -364,7 +364,7 @@
         "claude-code",
         "codex"
       ],
-      "updated_at": "2026-09-04T06:14:24Z",
+      "updated_at": "2026-09-04T06:27:24Z",
       "owner": "nextlevelbuilder",
       "created_at": "2025-11-30T11:36:31Z"
     }
@@ -857,17 +857,6 @@
     {
       "rank": 1,
       "author": "OpenAI",
-      "text": "Go to Home",
-      "likes": 0,
-      "comments": 0,
-      "shares": 0,
-      "url": "https://mbasic.facebook.com/OpenAI",
-      "platform": "facebook",
-      "source": "live"
-    },
-    {
-      "rank": 2,
-      "author": "OpenAI",
       "text": "Introducing GPT-5: our most capable model yet. GPT-5 brings native multimodal reasoning, 128K context, and a new coding agent that can build entire projects from a single prompt. Available today for ChatGPT Plus and API users.",
       "likes": 48200,
       "comments": 3150,
@@ -877,7 +866,7 @@
       "source": "示例"
     },
     {
-      "rank": 3,
+      "rank": 2,
       "author": "DeepMind",
       "text": "Our latest research: Gemini 2.5 Pro achieves state-of-the-art on 30+ benchmarks. New advances in long-context reasoning, scientific discovery, and multimodal understanding. Read the full paper on arXiv.",
       "likes": 31500,
@@ -888,7 +877,7 @@
       "source": "示例"
     },
     {
-      "rank": 4,
+      "rank": 3,
       "author": "AnthropicAI",
       "text": "Claude 4 Opus is here — our most intelligent model, now with extended thinking, computer use, and tool use capabilities. Claude can now manage multi-step workflows, run code, and reason through complex tasks autonomously.",
       "likes": 27800,
@@ -899,7 +888,7 @@
       "source": "示例"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "author": "MetaAILabs",
       "text": "Llama 4 is now open-source and available for download. With 405B parameters, vision capabilities, and 256K context window — the most powerful open model ever released. Fine-tune it, deploy it, build with it.",
       "likes": 35100,
@@ -910,7 +899,7 @@
       "source": "示例"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "author": "GoogleAI",
       "text": "Project Astra: your AI assistant that can see, hear, and help in real-time. Today we're opening the API to all developers. Build multimodal AI agents that understand the world through your camera.",
       "likes": 19600,
@@ -921,7 +910,7 @@
       "source": "示例"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "author": "AIatMicrosoft",
       "text": "Microsoft Copilot Studio: create custom AI agents for your enterprise — no code required. Connect to your data, define workflows, and deploy intelligent agents that handle customer support, HR, and IT tasks.",
       "likes": 15300,
@@ -932,7 +921,7 @@
       "source": "示例"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "author": "OpenAI",
       "text": "DevDay 2026 Recap: Realtime API, new fine-tuning tiers, Structured Outputs GA, and the Agents SDK. Building AI agents just got 10x easier. Watch the full keynote replay on our YouTube channel.",
       "likes": 22400,
@@ -943,7 +932,7 @@
       "source": "示例"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "author": "DeepMind",
       "text": "AlphaFold 4 predicts protein interactions with near-experimental accuracy. We've open-sourced the model weights and the full training dataset. Drug discovery will never be the same.",
       "likes": 26700,
@@ -954,7 +943,7 @@
       "source": "示例"
     },
     {
-      "rank": 10,
+      "rank": 9,
       "author": "MetaAILabs",
       "text": "PyTorch 3.0 is here with native distributed training, 4-bit quantization, and the new torch.compile v2 — 3x faster training out of the box. The future of open-source ML infrastructure.",
       "likes": 18900,
@@ -965,7 +954,7 @@
       "source": "示例"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "author": "AnthropicAI",
       "text": "Responsible Scaling Policy update: we've audited Claude 4's capabilities against our ASL-4 threat model. New evaluations show significant improvements in safety without compromising capability. Full report on our website.",
       "likes": 11200,
@@ -976,7 +965,7 @@
       "source": "示例"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "author": "GoogleAI",
       "text": "Gemma 3: our most efficient open model family. From 2B to 70B parameters, optimized for on-device, edge, and cloud deployment. Includes new safety classifiers and instruction-tuned variants.",
       "likes": 16400,
@@ -987,7 +976,7 @@
       "source": "示例"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "author": "AIatMicrosoft",
       "text": "GitHub Copilot now supports multi-file editing, autonomous code review, and our new Copilot Workspace for planning complex tasks. Shipping faster with AI that understands your entire codebase.",
       "likes": 14700,
@@ -998,7 +987,7 @@
       "source": "示例"
     },
     {
-      "rank": 14,
+      "rank": 13,
       "author": "OpenAI",
       "text": "Sora is now available to all users — generate cinematic-quality videos from text. New features include scene editing, audio generation, and 1080p output. Create AI-powered stories like never before.",
       "likes": 38500,
@@ -1009,7 +998,7 @@
       "source": "示例"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "author": "DeepMind",
       "text": "Gemini Nano is now running on over 200 million Android devices. On-device AI for smart replies, summarization, and real-time translation — all without sending data to the cloud.",
       "likes": 13800,
@@ -1020,7 +1009,7 @@
       "source": "示例"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "author": "MetaAILabs",
       "text": "Segment Anything 2 (SAM 2) is out — real-time object segmentation in video. Track any object across frames with zero-shot泛化能力. Open weights, open dataset, open research.",
       "likes": 21300,
@@ -1031,7 +1020,7 @@
       "source": "示例"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "author": "AnthropicAI",
       "text": "Claude Skills: composable, reusable capabilities you can share across teams. Define a skill once — coding, research, data analysis — and plug it into any Claude workflow. Community skill library launching next month.",
       "likes": 9800,
@@ -1042,7 +1031,7 @@
       "source": "示例"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "author": "GoogleAI",
       "text": "Veo 2 video generation is available in public preview. Create 4K, 60fps video clips with physics-aware rendering and consistent character identity. API access opens to all developers this quarter.",
       "likes": 17500,
@@ -1053,7 +1042,7 @@
       "source": "示例"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "author": "AIatMicrosoft",
       "text": "Azure AI Foundry: your one-stop platform for building, evaluating, and deploying enterprise AI applications. Now supports 1,800+ models, built-in RAG, and end-to-end monitoring.",
       "likes": 12100,
@@ -1064,13 +1053,24 @@
       "source": "示例"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "author": "OpenAI",
       "text": "Operator is now generally available — your AI agent that browses the web, fills forms, books flights, and manages tasks autonomously. Built-in guardrails let you review before any action is taken.",
       "likes": 29300,
       "comments": 3600,
       "shares": 7200,
       "url": "https://mbasic.facebook.com/OpenAI",
+      "platform": "facebook",
+      "source": "示例"
+    },
+    {
+      "rank": 20,
+      "author": "MetaAILabs",
+      "text": "NoVA (No Video Artifacts): our new image generation model that creates photorealistic images with zero visual artifacts. Better than DALL-E 3 on human preference evaluations. Weights on Hugging Face.",
+      "likes": 14200,
+      "comments": 1100,
+      "shares": 3400,
+      "url": "https://mbasic.facebook.com/MetaAILabs",
       "platform": "facebook",
       "source": "示例"
     }
