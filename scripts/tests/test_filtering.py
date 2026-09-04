@@ -76,6 +76,21 @@ def test_end_to_end_rank():
     assert r["x"][0]["score"] >= r["x"][1]["score"]
 
 
+def test_fresh_outscores_stale():
+    import datetime, time
+    def iso(days_ago):
+        dt = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=days_ago)
+        return dt.isoformat().replace("+00:00", "Z")
+    fresh = dict({"title": "AI skill guide", "text": "how to use agent skills step by step",
+                  "likes": 400, "author": "@a", "created_at": iso(1)})
+    stale = dict({"title": "AI skill guide", "text": "how to use agent skills step by step",
+                  "likes": 400, "author": "@a", "created_at": iso(60)})
+    _, sf = kept(dict(fresh), "x")
+    _, ss = kept(dict(stale), "x")
+    assert sf is not None and ss is not None
+    assert sf > ss, f"expected fresh>{stale}: {sf} vs {ss}"
+
+
 if __name__ == "__main__":
     import traceback
     passed = 0

@@ -98,10 +98,20 @@ def _item_text(item):
         item.get("text", ""),
         item.get("description", ""),
         item.get("name", ""),
+        item.get("full_name", ""),
         item.get("author", ""),
         item.get("page_name", ""),
+        item.get("channel", ""),
+        item.get("owner", ""),
+        item.get("topics", []),
     ]
-    return " ".join(str(p) for p in parts if p).lower()
+    flat = []
+    for p in parts:
+        if isinstance(p, (list, tuple)):
+            flat.extend(str(x) for x in p)
+        elif p:
+            flat.append(str(p))
+    return " ".join(flat).lower()
 
 
 def _count_keywords(text_lower, keywords):
@@ -182,10 +192,7 @@ def score_item(item, platform, lists):
       * >= 2 hard-block promo keywords
       * URL-only / no meaningful text
     """
-    text = (" ".join(str(x) for x in [
-        item.get("title", ""), item.get("text", ""), item.get("description", ""),
-        item.get("name", ""),
-    ] if x)).strip()
+    text = _item_text(item)
     # set platform if missing
     if not item.get("platform"):
         item["platform"] = platform
@@ -217,15 +224,22 @@ def score_item(item, platform, lists):
     if hard_hits == 1 and include_score < 0.6 and not known_author:
         return None
 
+    # Momentum / freshness: prefer recently-active & fast-moving content
+    fresh_score = _freshness(
+        item.get("updated_at") or item.get("created_at") or item.get("published_at"),
+        platform,
+    )
+
     # Scoring
     engagement_score = _engagement_norm(eng)
     desc_score = min(text_len / 200.0, 1.0)
     platform_score = {"github": 1.0, "youtube": 0.9, "x": 0.8, "facebook": 0.7}.get(platform, 0.8)
 
-    score = (0.30 * include_score
-             + 0.25 * engagement_score
-             + 0.20 * desc_score
-             + 0.15 * platform_score)
+    score = (0.26 * include_score
+             + 0.22 * engagement_score
+             + 0.17 * desc_score
+             + 0.12 * platform_score
+             + 0.14 * fresh_score)
 
     # spam penalty (soft hits and graylisted single hard hit)
     penalty = soft_hits * 0.1
@@ -255,6 +269,39 @@ def _engagement_norm(value):
         return 0.0
     import math
     return min(math.log(value + 1) / math.log(10000), 1.0)
+
+
+def _freshness(ts, platform):
+    """Return 0-1 recency score from an ISO timestamp, platform-tailored.
+
+    A recently-updated GitHub repo or recently-published X/YouTube post scores
+    higher (trending/fast-moving), while stale content scores lower.
+    """
+    import datetime
+    if not ts:
+        return 0.4  # neutral when timestamp unknown
+    try:
+        dt = _parse_iso(ts)
+    except (TypeError, ValueError):
+        return 0.4
+    now = datetime.datetime.now(datetime.timezone.utc)
+    age_days = max(0.0, (now - dt).total_seconds() / 86400.0)
+
+    if platform == "github":
+        # repos: active within ~30 days == trending; older decays
+        return max(0.0, 1.0 - age_days / 45.0)
+    # social posts (x/youtube/facebook): hot within days, decay fast
+    return max(0.0, 1.0 - age_days / 14.0)
+
+
+def _parse_iso(ts):
+    import datetime
+    s = str(ts).strip().replace("Z", "+00:00")
+    try:
+        return datetime.datetime.fromisoformat(s)
+    except ValueError:
+        # fallback: some scrapers emit 'YYYY-MM-DD'
+        return datetime.datetime.strptime(s[:10], "%Y-%m-%d").replace(tzinfo=datetime.timezone.utc)
 
 
 def _dedup(items, platform):
