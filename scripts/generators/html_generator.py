@@ -81,11 +81,13 @@ def _render_youtube_section(items):
 
 def generate_index_html(dates, config):
     """Generate the site index page listing all available reports."""
+    from utils.helpers import report_dir_name
     nav_links = ""
     for d in dates:
+        report_name = report_dir_name(d)
         nav_links += (
-            f'<div class="card"><a href="Joke/{d}/index.html">📅 {d}</a>'
-            f' <a href="Joke/{d}/report.pdf" class="pdf-link">⬇ PDF</a></div>\n'
+            f'<div class="card"><a href="output/{report_name}/index.html">📅 {d}</a>'
+            f' <a href="output/{report_name}/report.pdf" class="pdf-link">⬇ PDF</a></div>\n'
         )
     html_content = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -125,7 +127,9 @@ def generate_index_html(dates, config):
 
 def generate_daily_html(date, data, config):
     """Generate a single self-contained daily HTML report."""
+    from utils.helpers import report_dir_name
     top_n = config.get("top_n", 20)
+    report_name = report_dir_name(date)
     github_html = _render_github_section(data.get("github", []))
     x_html = _render_x_section(data.get("x", []))
     youtube_html = _render_youtube_section(data.get("youtube", []))
@@ -138,7 +142,7 @@ def generate_daily_html(date, data, config):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI 项目每日排行榜 · {date}</title>
-<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../../css/style.css">
 </head>
 <body>
 <header>
@@ -149,9 +153,9 @@ def generate_daily_html(date, data, config):
 </header>
 <nav>
     <div class="container">
-        <a href="../../index.html">🏠 首页</a>
-        <a href="../{date}/report.pdf">⬇ 下载 PDF</a>
-        <a href="../{date}/index.html">📄 本页</a>
+        <a href="../../../index.html">🏠 首页</a>
+        <a href="report.pdf">⬇ 下载 PDF</a>
+        <a href="index.html">📄 本页</a>
     </div>
 </nav>
 <main class="container">

@@ -42,7 +42,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/run.py
 
-      - name: Commit reports to repository (historical archive)
+      - name: Commit reports to repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -50,15 +50,10 @@ jobs:
           git commit -m "📊 AI project daily report: $(date +%F)" || echo "No changes to commit"
           git push
 
-      - name: Upload Pages artifact
-        uses: actions/configure-pages@v5
-        id: configure_pages
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./site
-
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          force_orphan: true

@@ -35,8 +35,8 @@ ai-project-tracker/
 ├── data/                         # 原始JSON数据（运行期生成）
 ├── site/                         # 生成的静态站点（发布到 Pages）
 │   ├── index.html               # 首页
-│   ├── Joke/             # 按日期组织的报告目录
-│   │   └── YYYY-MM-DD/
+│   ├── output/                  # 按日期组织的报告输出目录
+│   │   └── Ai_skill_YYYY_MM_DD/ # 例：Ai_skill_2026_09_04
 │   │       ├── index.html      # 当日HTML报告
 │   │       ├── report.pdf      # 当日PDF报告
 │   │       └── data/report.json # 原始数据
@@ -108,7 +108,7 @@ python scripts/run.py --date 2026-09-04
 生成后可通过 GitHub Pages 访问：
 
 ```
-https://<username>.github.io/<repo>/Joke/2026-09-04/
+https://<username>.github.io/<repo>/output/Ai_skill_2026_09_04/
 ```
 
 或访问首页 `index.html` 查看最新报告列表。

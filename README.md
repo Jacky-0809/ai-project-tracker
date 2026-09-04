@@ -30,8 +30,8 @@ site/
 ├── index.html              # 首页：历史报告列表
 ├── rss.xml                 # RSS 订阅
 ├── css/style.css
-└── Joke/
-    └── 2026-09-04/
+└── output/
+    └── Ai_skill_2026_09_04/   # 例：AI 项目当日报告
         ├── index.html      # 当日 HTML 报告（图文混排）
         ├── report.pdf      # 当日 PDF 报告（A4）
         └── data/report.json # 原始数据
@@ -42,8 +42,8 @@ site/
 `.github/workflows/daily.yml` 每天 UTC 00:30（北京时间 08:30）自动运行：
 
 1. 运行 `scripts/run.py` 抓取数据、生成 HTML + PDF
-2. 提交 `site/` 到仓库
-3. 通过 `peaceiris/actions-gh-pages` 部署到 `gh-pages` 分支
+2. 提交 `site/` 到仓库（历史归档）
+3. 通过 `actions/upload-pages-artifact` + `actions/deploy-pages` 部署到 GitHub Pages
 
 ### 首次配置
 
@@ -55,7 +55,7 @@ site/
 ### 访问
 
 ```
-https://<user>.github.io/<repo>/Joke/2026-09-04/
+https://<user>.github.io/<repo>/output/Ai_skill_2026_09_04/
 ```
 
 ## 配置 (config.json)

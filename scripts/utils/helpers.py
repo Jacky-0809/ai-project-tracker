@@ -44,3 +44,29 @@ def days_ago(days):
 def current_date():
     """Return today's date string (YYYY-MM-DD)."""
     return datetime.now().strftime("%Y-%m-%d")
+
+
+def report_dir_name(date):
+    """Convert a YYYY-MM-DD date string to the report directory name.
+
+    e.g. '2026-09-04' -> 'Ai_skill_2026_09_04'
+    """
+    parts = date.split("-")
+    if len(parts) == 3:
+        return f"Ai_skill_{parts[0]}_{parts[1]}_{parts[2]}"
+    return f"Ai_skill_{date.replace('-', '_')}"
+
+
+def parse_report_dir(dir_name):
+    """Parse a report directory name back to a YYYY-MM-DD date string.
+
+    e.g. 'Ai_skill_2026_09_04' -> '2026-09-04'
+    Returns None if the name is not a valid report directory.
+    """
+    if not dir_name.startswith("Ai_skill_"):
+        return None
+    rest = dir_name[len("Ai_skill_"):]
+    parts = rest.split("_")
+    if len(parts) == 3 and all(p.isdigit() for p in parts):
+        return f"{parts[0]}-{parts[1]}-{parts[2]}"
+    return None

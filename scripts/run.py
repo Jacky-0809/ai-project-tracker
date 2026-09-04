@@ -14,7 +14,10 @@ import sys
 # Ensure imports resolve from the scripts/ directory
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from utils.helpers import load_config, ensure_dir, save_json, current_date  # noqa: E402
+from utils.helpers import (  # noqa: E402
+    load_config, ensure_dir, save_json, current_date,
+    report_dir_name, parse_report_dir,
+)
 
 
 def main():
@@ -27,8 +30,9 @@ def main():
     config = load_config()
     date = args.date or current_date()
     top_n = config.get("top_n", 20)
+    report_name = report_dir_name(date)
 
-    data_dir = os.path.join(config.get("output_site", "site"), "Joke", date, "data")
+    data_dir = os.path.join(config.get("output_site", "site"), "output", report_name, "data")
     ensure_dir(data_dir)
 
     # ---- 1. Scrape (or load cache) ----
@@ -44,7 +48,7 @@ def main():
     from generators.pdf_generator import generate_pdf
 
     site_dir = config.get("output_site", "site")
-    date_dir = os.path.join(site_dir, "Joke", date)
+    date_dir = os.path.join(site_dir, "output", report_name)
     ensure_dir(date_dir)
 
     html_content = generate_daily_html(date, payload, config)
@@ -95,12 +99,13 @@ def scrape_all(config, top_n):
 
 def generate_site_index(site_dir, config):
     """Regenerate the site index.html listing all available date reports."""
-    dates_dir = os.path.join(site_dir, "Joke")
+    dates_dir = os.path.join(site_dir, "output")
     dates = []
     if os.path.isdir(dates_dir):
         for d in sorted(os.listdir(dates_dir)):
-            if d.count("-") == 2 and os.path.isdir(os.path.join(dates_dir, d)):
-                dates.append(d)
+            parsed = parse_report_dir(d)
+            if parsed and os.path.isdir(os.path.join(dates_dir, d)):
+                dates.append(parsed)
     dates.sort(reverse=True)
 
     from generators.html_generator import generate_index_html
@@ -121,11 +126,12 @@ def generate_site_index(site_dir, config):
 def generate_rss(dates, config):
     items = ""
     for d in dates:
+        report_name = report_dir_name(d)
         items += f"""
     <item>
         <title>AI 项目每日排行榜 {d}</title>
-        <link>Joke/{d}/index.html</link>
-        <guid>Joke/{d}/index.html</guid>
+        <link>output/{report_name}/index.html</link>
+        <guid>output/{report_name}/index.html</guid>
         <pubDate>{d}</pubDate>
         <description>GitHub / X / YouTube AI 项目与 Skill 每日 Top {config.get('top_n', 20)} 排行</description>
     </item>"""
