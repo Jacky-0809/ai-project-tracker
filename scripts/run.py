@@ -78,7 +78,8 @@ def main():
 
 def scrape_all(config, top_n):
     """Run all scrapers and combine into a single payload dict."""
-    payload = {"date": current_date(), "github": [], "x": [], "youtube": [], "facebook": []}
+    payload = {"date": current_date(), "github": [], "x": [], "youtube": [], "facebook": [],
+               "x_bookmarks": [], "youtube_liked": []}
     reset_net_state()
 
     try:
@@ -108,6 +109,20 @@ def scrape_all(config, top_n):
         print(f"✔️  Facebook: {len(payload['facebook'])} items")
     except Exception as e:
         print(f"⚠️  Facebook scrape failed: {e}")
+
+    try:
+        from scrapers.x_bookmarks_scraper import scrape_x_bookmarks
+        payload["x_bookmarks"] = scrape_x_bookmarks(config, top_n)
+        print(f"✔️  X收藏  : {len(payload['x_bookmarks'])} items")
+    except Exception as e:
+        print(f"⚠️  X bookmarks scrape failed: {e}")
+
+    try:
+        from scrapers.youtube_liked_scraper import scrape_youtube_liked
+        payload["youtube_liked"] = scrape_youtube_liked(config, top_n)
+        print(f"✔️  YT收藏 : {len(payload['youtube_liked'])} items")
+    except Exception as e:
+        print(f"⚠️  YouTube liked scrape failed: {e}")
 
     return payload
 

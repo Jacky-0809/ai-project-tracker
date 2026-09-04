@@ -91,6 +91,15 @@ https://<user>.github.io/<repo>/output/Ai_skill_2026_09_04/
 
 关键词表内置在 `filtering.py`，也可在 `config["filtering"]` 中覆盖扩展。
 
+## 本周收藏（X Bookmarks & YouTube Liked）
+
+报告新增「📚 本周收藏」章节，聚合用户在 X 和 YouTube 上本周收藏/点赞的 AI 内容。
+
+- **X Bookmarks**：需配置 `X_USER_ID` + `X_ACCESS_TOKEN`（OAuth 2.0 User Context，`bookmark.read` 权限）
+- **YouTube Liked**：需配置 `YOUTUBE_CLIENT_ID` + `YOUTUBE_CLIENT_SECRET` + `YOUTUBE_REFRESH_TOKEN`（OAuth 2.0，`youtube.readonly` 权限）
+- 未配置 OAuth Token 时自动降级到内置示例数据（20 条 AI skill 相关内容，标注「示例」）
+- 详细配置步骤见 [API_GUIDE.md](API_GUIDE.md#4-本周收藏功能--x-bookmarks--youtube-liked-videos)
+
 ## 合规说明
 
 - 爬取遵守各平台服务条款与 API 使用限制

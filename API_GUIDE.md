@@ -75,3 +75,75 @@ key   = os.environ.get("YOUTUBE_API_KEY")  # YouTube Data API v3
 | `linny006/trending-claude-skills` | GitHub 搜索自动榜单 → Pages | GitHub token |
 
 **结论**：所有抓 X/YT 的开源项目都用免费方法（syndication/trends24/RSS/yt-dlp），官方付费 X API 在该场景不划算；YouTube 官方 key 免费且最可靠。
+
+---
+
+## 4. 本周收藏功能 — X Bookmarks & YouTube Liked Videos
+
+报告新增「📚 本周收藏」章节，聚合用户在 X 和 YouTube 上本周收藏/点赞的内容。需要 **OAuth 2.0 用户级 Token**（不同于前面的 App-level Bearer Token）。
+
+### 4.1 X Bookmarks — `X_USER_ID` + `X_ACCESS_TOKEN`
+
+X 的收藏（Bookmarks）是**私有数据**，必须使用 OAuth 2.0 User Context 访问。
+
+#### 获取步骤
+
+1. 登录 <https://console.x.com> → 你的 Developer Portal 项目
+2. **Keys and tokens** → 确保你的 App 的 **User authentication settings** 已开启 OAuth 2.0，权限范围包含 `bookmark.read`
+3. 用 OAuth 2.0 Authorization Code Flow 获取 User Access Token：
+   - 构造授权 URL：`https://twitter.com/i/oauth2/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT&response_type=code&scope=bookmark.read+tweet.read+users.read&state=xyz`
+   - 用户授权后拿到 `code`
+   - 用 `code` 换取 `access_token`（POST `https://api.twitter.com/2/oauth2/token`）
+4. 获取你的 numeric User ID（GET `https://api.twitter.com/2/users/me`）
+
+#### GitHub Actions Secrets 配置
+
+```
+X_USER_ID        = 你的数字用户 ID（如 1234567890）
+X_ACCESS_TOKEN   = OAuth 2.0 User Access Token（有 bookmark.read 权限）
+```
+
+#### 本地测试
+
+```bash
+export X_USER_ID="1234567890"
+export X_ACCESS_TOKEN="eyJhbGciOi..."
+python scripts/scrapers/x_bookmarks_scraper.py
+```
+
+### 4.2 YouTube Liked Videos — OAuth 2.0
+
+YouTube 的「喜欢的视频」也是**私有数据**，需要 OAuth 2.0 授权。
+
+#### 获取步骤
+
+1. <https://console.cloud.google.com> → 你的项目 → **APIs & Services → Credentials**
+2. **Create Credentials → OAuth client ID** → 选择 "Web application"
+3. 添加 Authorized redirect URI：`https://localhost`（本地测试用）
+4. 记录 `client_id` 和 `client_secret`
+5. 构造授权 URL：`https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_ID&redirect_uri=https://localhost&response_type=code&scope=https://www.googleapis.com/auth/youtube.readonly&access_type=offline`
+6. 浏览器打开该 URL → 授权 → 拿到 `code`
+7. 用 `code` 换取 `refresh_token`（POST `https://oauth2.googleapis.com/token`）
+
+#### GitHub Actions Secrets 配置
+
+```
+YOUTUBE_CLIENT_ID      = OAuth 2.0 Client ID
+YOUTUBE_CLIENT_SECRET  = OAuth 2.0 Client Secret
+YOUTUBE_REFRESH_TOKEN  = 授权后获得的 Refresh Token
+```
+
+> Refresh Token 有效期很长（通常不 expires），每次运行时自动换取 Access Token。
+
+#### 本地测试
+
+```bash
+export YOUTUBE_CLIENT_ID="xxxxx.apps.googleusercontent.com"
+export YOUTUBE_CLIENT_SECRET="GOCSPX-xxxxx"
+export YOUTUBE_REFRESH_TOKEN="1//0xxxxx"
+python scripts/scrapers/youtube_liked_scraper.py
+```
+
+### 4.3 无 Token 时的行为
+
+未配置 OAuth Token 时，收藏章节自动降级到**内置示例数据**（20 条 AI skill 相关内容），条目标注「示例」且样式淡化，与现有 X/YouTube 降级逻辑一致。

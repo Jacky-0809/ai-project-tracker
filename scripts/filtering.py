@@ -133,9 +133,9 @@ def _engagement(item):
     platform = item.get("platform", "")
     if platform == "github":
         return item.get("stars", 0)
-    if platform == "youtube":
+    if platform in ("youtube", "youtube_liked"):
         return item.get("views", 0)
-    # x and facebook use likes
+    # x, x_bookmarks, facebook use likes
     return item.get("likes", 0)
 
 
@@ -145,24 +145,22 @@ def _quality_floor(platform):
         "x": 3,
         "youtube": 100,
         "facebook": 5,
+        "x_bookmarks": 3,
+        "youtube_liked": 100,
     }
     return floors.get(platform, 0)
 
 
 def filter_and_rank_top(sections, top_n, config=None):
-    """Filter, score, dedup, and rank each platform's items.
+    """Filter per-platform, then produce a unified momentum Top-N ("新上榜单/上升最快").
 
-    Args:
-        sections: dict of {platform: [item, ...]} — the raw scraped payload.
-        top_n: how many to keep per platform.
-        config: full config dict (looks at config["filtering"]).
-
-    Returns:
-        A new {platform: [ranked_item, ...]} dict. Items are mutated in place
-        with a "score" field.
+    Per-platform filtering still applies (spam/quality floors).
+    Returns {"<platform>": [ranked_items], "trending": [unified_top_N]}.
     """
     lists = _load_lists(config)
     out = {}
+    all_filtered = []
+
     for platform, items in sections.items():
         if not isinstance(items, list):
             continue
@@ -180,6 +178,16 @@ def filter_and_rank_top(sections, top_n, config=None):
         for idx, it in enumerate(filtered[:top_n]):
             it["rank"] = idx + 1
         out[platform] = filtered[:top_n]
+        all_filtered.extend(filtered[:top_n])
+
+    # ---- unified momentum ranking across all platforms ----
+    for it in all_filtered:
+        _compute_momentum(it)
+    all_filtered.sort(key=lambda x: x.get("momentum_score", 0), reverse=True)
+    for idx, it in enumerate(all_filtered[:top_n]):
+        it["trending_rank"] = idx + 1
+    out["trending"] = all_filtered[:top_n]
+
     return out
 
 
@@ -233,7 +241,7 @@ def score_item(item, platform, lists):
     # Scoring
     engagement_score = _engagement_norm(eng)
     desc_score = min(text_len / 200.0, 1.0)
-    platform_score = {"github": 1.0, "youtube": 0.9, "x": 0.8, "facebook": 0.7}.get(platform, 0.8)
+    platform_score = {"github": 1.0, "youtube": 0.9, "youtube_liked": 0.95, "x": 0.8, "x_bookmarks": 0.85, "facebook": 0.7}.get(platform, 0.8)
 
     score = (0.26 * include_score
              + 0.22 * engagement_score
@@ -321,3 +329,72 @@ def _dedup(items, platform):
         seen[key] = it
         result.append(it)
     return result
+
+
+# ---------------------------------------------------------------------------
+# Momentum / "新上榜单 / 上升最快"
+# ---------------------------------------------------------------------------
+
+_NEW_DAYS = 7        # item created within this many days → "新"
+_STALE_DAYS = 30     # item untouched for this many days → stale penalty
+
+
+def _compute_momentum(item):
+    """Set 'momentum_score', 'badge' on an item for the unified trending list.
+
+    Momentum is based on velocity: stars-per-day since creation (GitHub),
+    or recency + engagement for social platforms.
+
+    badge values:
+      "新"     — created within last 30 days (brand new)
+      "上升"   — high velocity (stars-per-day or recent + high engagement)
+      (none)   — older / lower-engagement
+    """
+    import datetime
+    platform = item.get("platform", "")
+    now = datetime.datetime.now(datetime.timezone.utc)
+
+    # ---- Compute velocity (primary momentum signal) ----
+    velocity = 0.0
+    created = item.get("created_at") or item.get("published_at")
+    age_days = None
+    if created:
+        try:
+            dt = _parse_iso(created)
+            age_days = max(1.0, (now - dt).total_seconds() / 86400.0)
+        except (TypeError, ValueError):
+            age_days = None
+
+    if platform == "github" and age_days is not None:
+        # Velocity = stars per day (higher = faster rising)
+        stars = item.get("stars", 0)
+        velocity = min(stars / age_days, 1000.0)  # cap at 1000 stars/day
+        velocity_norm = min(velocity / 100.0, 1.0)  # normalize: 100 stars/day = 1.0
+    else:
+        # Social platforms: use engagement + recency
+        engagement = _engagement_norm(_engagement(item))
+        freshness = _freshness(created, platform)
+        velocity_norm = engagement * 0.6 + freshness * 0.4
+
+    # ---- Momentum score = velocity (primary) + freshness (secondary) ----
+    freshness = _freshness(created, platform)
+    momentum = velocity_norm * 0.70 + freshness * 0.30
+    item["momentum_score"] = round(momentum, 4)
+    item["velocity"] = round(velocity if platform == "github" else velocity_norm, 2)
+
+    # ---- Badge logic ----
+    created_recent = False
+    if created:
+        try:
+            dt = _parse_iso(created)
+            created_age = (now - dt).total_seconds() / 86400.0
+            created_recent = created_age <= 30  # 30 days
+        except (TypeError, ValueError):
+            pass
+
+    if created_recent:
+        item["badge"] = "新"
+    elif velocity_norm >= 0.5 or (platform != "github" and velocity_norm >= 0.4):
+        item["badge"] = "上升"
+    else:
+        item["badge"] = ""

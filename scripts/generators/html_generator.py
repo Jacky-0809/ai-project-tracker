@@ -84,6 +84,11 @@ footer { text-align: center; padding: 26px 0; color: #9aa3b2; font-size: 13px; }
   .col-author{ display: none; }
 }
 @media print { nav, footer, .report-links { display: none; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #eee; } }
+.badge-new{background:#facc15;color:#1a1a1a;font-size:.72em;padding:2px 7px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.badge-rising{background:#34d399;color:#064e3b;font-size:.72em;padding:2px 7px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.trending-desc{font-size:.82em;color:#64748b;margin:4px 0 12px}
+.card.trending{background:linear-gradient(135deg,#fef9ee 0%,#fff 50%);border:1px solid #f59e0b20}
+.card.bookmarks{background:linear-gradient(135deg,#f0f9ff 0%,#fff 50%);border:1px solid #3b82f620}
 """
 
 def _esc(text):
@@ -217,6 +222,132 @@ def _render_facebook_section(items):
     return "\n".join(rows)
 
 
+# ---------------------------------------------------------------------------
+# "本周收藏" sections — X bookmarks & YouTube liked videos
+# ---------------------------------------------------------------------------
+
+def _render_x_bookmarks_section(items):
+    """Render user's X bookmarks/favorites this week."""
+    if not items:
+        return '<p class="empty">暂无 X 收藏数据（需配置 X_ACCESS_TOKEN + X_USER_ID）</p>'
+    rows = [_table_header("x_bookmarks")]
+    for it in items:
+        text = (it.get("text") or "").replace("\n", " ")
+        heat = (
+            f"<span class='heat-likes'>❤️</span> {_fmt_num(it.get('likes', 0))}"
+            f"&nbsp;🔁 {_fmt_num(it.get('retweets', 0))}"
+        )
+        title = it.get("author") or ""
+        desc = _truncate(text, 200)
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+        tag = '<span class="tag-example">示例</span>' if src == "示例" else ""
+        rows.append(f"""
+        <tr{row_cls}>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(title)}</a>{tag}</td>
+            <td class="col-desc">{_esc(desc)}</td>
+            <td class="col-author">{_esc(title)}</td>
+            <td class="col-heat">{heat}</td>
+        </tr>""")
+    rows.append(_table_footer())
+    return "\n".join(rows)
+
+
+def _render_youtube_liked_section(items):
+    """Render user's YouTube liked videos this week."""
+    if not items:
+        return '<p class="empty">暂无 YouTube 收藏数据（需配置 YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET + YOUTUBE_REFRESH_TOKEN）</p>'
+    rows = [_table_header("youtube_liked")]
+    for it in items:
+        views = it.get("views", 0)
+        views_str = _fmt_num(views) if views else "N/A"
+        desc = it.get("description") or it.get("channel") or ""
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+        tag = '<span class="tag-example">示例</span>' if src == "示例" else ""
+        rows.append(f"""
+        <tr{row_cls}>
+            <td class="col-rank">{it['rank']}</td>
+            <td class="col-title"><a href="{_esc(it.get('url',''))}" target="_blank">{_esc(it.get('title') or '')}</a>{tag}</td>
+            <td class="col-desc">{_esc(_truncate(desc))}</td>
+            <td class="col-author">{_esc(it.get('channel') or '')}</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> {views_str}</td>
+        </tr>""")
+    rows.append(_table_footer())
+    return "\n".join(rows)
+
+
+# ---------------------------------------------------------------------------
+# Unified "新上榜单 / 上升最快 Top 20" trending section
+# ---------------------------------------------------------------------------
+
+_PLATFORM_BADGE = {
+    "github":   '<span class="platform-badge badge-github" style="font-size:.7em;margin-right:4px">GitHub</span>',
+    "x":        '<span class="platform-badge badge-x" style="font-size:.7em;margin-right:4px">X</span>',
+    "youtube":  '<span class="platform-badge badge-youtube" style="font-size:.7em;margin-right:4px">YouTube</span>',
+    "facebook": '<span class="platform-badge badge-facebook" style="font-size:.7em;margin-right:4px">Facebook</span>',
+}
+
+
+def _render_trending_section(items):
+    """Render the unified cross-platform '新上榜单 / 上升最快 Top 20' table."""
+    if not items:
+        return '<p class="empty">暂无数据</p>'
+    rows = ["""<table>
+    <thead>
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-heat">Momentum</th>
+        </tr>
+    </thead>
+    <tbody>"""]
+
+    for it in items:
+        platform = it.get("platform", "")
+        badge_cls = "badge-new" if it.get("badge") == "新" else ("badge-rising" if it.get("badge") == "上升" else "")
+        badge_label = it.get("badge", "")
+        badge_html = f'<span class="{badge_cls}">{badge_label}</span>' if badge_label else ""
+
+        # Build title with platform badge
+        title_raw = it.get("name") or it.get("title") or it.get("author") or it.get("page_name") or ""
+        link = it.get("url", "")
+        title_cell = _PLATFORM_BADGE.get(platform, "")
+        if link:
+            title_cell += f'<a href="{_esc(link)}" target="_blank">{_esc(title_raw)}</a>'
+        else:
+            title_cell += _esc(title_raw)
+        title_cell += badge_html
+
+        # Description
+        desc = it.get("description") or it.get("text") or ""
+        desc = _truncate(desc, 160)
+
+        # Momentum: show score + velocity
+        momentum = it.get("momentum_score", 0)
+        velocity = it.get("velocity", "")
+        if platform == "github" and velocity:
+            heat = f"<b>{momentum:.2f}</b> <span style='color:#64748b;font-size:.75em'>({velocity:.0f} ⭐/day)</span>"
+        else:
+            heat = f"<b>{momentum:.2f}</b>"
+
+        src = it.get("source", "")
+        row_cls = ' class="row-example"' if src == "示例" else ""
+
+        rows.append(f"""
+        <tr{row_cls}>
+            <td class="col-rank">{it.get('trending_rank', it.get('rank', ''))}</td>
+            <td class="col-title">{title_cell}</td>
+            <td class="col-desc">{_esc(_truncate(desc))}</td>
+            <td class="col-heat">{heat}</td>
+        </tr>""")
+
+    rows.append(_table_footer())
+    return "\n".join(rows)
+
+
 def generate_index_html(dates, config):
     """Generate the site index page listing all available reports."""
     from utils.helpers import report_dir_name
@@ -295,10 +426,15 @@ def generate_daily_html(date, data, config):
     """Generate a single self-contained daily HTML report (inline CSS)."""
     from utils.helpers import report_dir_name
     top_n = config.get("top_n", 20)
+
+    trending_items = data.get("trending", [])
+    trending_html = _render_trending_section(trending_items)
     github_html = _render_github_section(data.get("github", []))
     x_html = _render_x_section(data.get("x", []))
     youtube_html = _render_youtube_section(data.get("youtube", []))
     facebook_html = _render_facebook_section(data.get("facebook", []))
+    x_bookmarks_html = _render_x_bookmarks_section(data.get("x_bookmarks", []))
+    youtube_liked_html = _render_youtube_liked_section(data.get("youtube_liked", []))
 
     summary = _build_summary(data)
 
@@ -333,6 +469,30 @@ def generate_daily_html(date, data, config):
     <div class="card">
         <h2>📊 今日概览</h2>
         {summary}
+    </div>
+
+    <div class="card trending">
+        <h2>🚀 新上榜单 / 上升最快 Top {top_n}<span class="src-hint">跨平台 Momentum</span></h2>
+        <p class="trending-desc">按「新鲜度 × 热度」综合评分，<span class="badge-new">新</span> = 最近 30 天发布，<span class="badge-rising">上升</span> = 高速度增长</p>
+        <div class="table-wrap">
+        {trending_html}
+        </div>
+    </div>
+
+    <div class="card bookmarks">
+        <h2>📚 本周收藏 · X<span class="src-hint">用户收藏</span></h2>
+        <p class="trending-desc">本周收藏的 X/Twitter 帖子（需配置 OAuth token）</p>
+        <div class="table-wrap">
+        {x_bookmarks_html}
+        </div>
+    </div>
+
+    <div class="card bookmarks">
+        <h2>📚 本周收藏 · YouTube<span class="src-hint">用户收藏</span></h2>
+        <p class="trending-desc">本周收藏的 YouTube 视频（需配置 OAuth token）</p>
+        <div class="table-wrap">
+        {youtube_liked_html}
+        </div>
     </div>
 
     <div class="card github">

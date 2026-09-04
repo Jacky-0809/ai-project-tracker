@@ -13,8 +13,10 @@ description: 每日抓取GitHub、X(Twitter)、YouTube上排名前20的AI Skill�
 - 抓取X上关于AI项目/Skill的热门讨论和推文
 - 抓取YouTube上关于AI项目/Skill的热门视频
 - 抓取Facebook公开页面的AI项目动态
+- **本周收藏**：聚合用户在 X/YouTube 上本周收藏/点赞的 AI 内容（需 OAuth token，无 token 时降级示例数据）
 - 生成当日排名前20的AI项目报告
 - **内容筛选**：只保留优秀 AI skill 的介绍/测评/用法教程，自动过滤广告、垃圾与推销（`scripts/filtering.py`，含中英文关键词 + 评分排序 + 质量下限）
+- **新上榜单/上升最快**：跨平台 Momentum 排行（新鲜度 × 热度），标注「新」/「上升」徽章
 - 输出HTML和PDF两种格式
 - 自动发布到GitHub Pages
 
