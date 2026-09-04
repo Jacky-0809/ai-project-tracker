@@ -7,8 +7,8 @@
       "full_name": "openclaw/openclaw",
       "url": "https://github.com/openclaw/openclaw",
       "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
-      "stars": 388793,
-      "forks": 81644,
+      "stars": 388794,
+      "forks": 81642,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -17,7 +17,7 @@
         "molty",
         "openclaw"
       ],
-      "updated_at": "2026-09-04T02:08:24Z",
+      "updated_at": "2026-09-04T02:38:00Z",
       "owner": "openclaw",
       "created_at": "2025-11-24T10:16:47Z"
     },
@@ -27,8 +27,8 @@
       "full_name": "obra/superpowers",
       "url": "https://github.com/obra/superpowers",
       "description": "An agentic skills framework & software development methodology that works.",
-      "stars": 281365,
-      "forks": 25206,
+      "stars": 281382,
+      "forks": 25207,
       "language": "Shell",
       "topics": [
         "ai",
@@ -37,7 +37,7 @@
         "obra",
         "sdlc"
       ],
-      "updated_at": "2026-09-04T02:05:20Z",
+      "updated_at": "2026-09-04T02:37:50Z",
       "owner": "obra",
       "created_at": "2025-10-09T19:45:18Z"
     },
@@ -47,11 +47,11 @@
       "full_name": "mattpocock/skills",
       "url": "https://github.com/mattpocock/skills",
       "description": "Skills for Real Engineers. Straight from my .agents directory.",
-      "stars": 247537,
-      "forks": 20988,
+      "stars": 247601,
+      "forks": 20993,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T02:08:08Z",
+      "updated_at": "2026-09-04T02:38:13Z",
       "owner": "mattpocock",
       "created_at": "2026-02-03T11:15:53Z"
     },
@@ -61,8 +61,8 @@
       "full_name": "affaan-m/ECC",
       "url": "https://github.com/affaan-m/ECC",
       "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "stars": 247251,
-      "forks": 37259,
+      "stars": 247267,
+      "forks": 37260,
       "language": "JavaScript",
       "topics": [
         "ai-agents",
@@ -71,7 +71,7 @@
         "claude-code",
         "developer-tools"
       ],
-      "updated_at": "2026-09-04T02:07:23Z",
+      "updated_at": "2026-09-04T02:36:41Z",
       "owner": "affaan-m",
       "created_at": "2026-01-18T00:51:51Z"
     },
@@ -81,8 +81,8 @@
       "full_name": "NousResearch/hermes-agent",
       "url": "https://github.com/NousResearch/hermes-agent",
       "description": "The agent that grows with you",
-      "stars": 240882,
-      "forks": 49359,
+      "stars": 240897,
+      "forks": 49367,
       "language": "Python",
       "topics": [
         "ai",
@@ -91,7 +91,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T02:08:01Z",
+      "updated_at": "2026-09-04T02:38:36Z",
       "owner": "NousResearch",
       "created_at": "2025-07-22T22:22:28Z"
     },
@@ -101,11 +101,11 @@
       "full_name": "anomalyco/opencode",
       "url": "https://github.com/anomalyco/opencode",
       "description": "The open source coding agent.",
-      "stars": 203580,
-      "forks": 26562,
+      "stars": 203585,
+      "forks": 26563,
       "language": "TypeScript",
       "topics": [],
-      "updated_at": "2026-09-04T02:06:46Z",
+      "updated_at": "2026-09-04T02:36:28Z",
       "owner": "anomalyco",
       "created_at": "2025-04-30T20:08:00Z"
     },
@@ -116,7 +116,7 @@
       "url": "https://github.com/n8n-io/n8n",
       "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
       "stars": 203266,
-      "forks": 60540,
+      "forks": 60542,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -125,7 +125,7 @@
         "cli",
         "data-flow"
       ],
-      "updated_at": "2026-09-04T02:01:25Z",
+      "updated_at": "2026-09-04T02:31:02Z",
       "owner": "n8n-io",
       "created_at": "2019-06-22T09:24:21Z"
     },
@@ -155,13 +155,13 @@
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
       "description": "Public repository for Agent Skills",
-      "stars": 173685,
-      "forks": 20607,
+      "stars": 173698,
+      "forks": 20608,
       "language": "Python",
       "topics": [
         "agent-skills"
       ],
-      "updated_at": "2026-09-04T02:02:01Z",
+      "updated_at": "2026-09-04T02:34:40Z",
       "owner": "anthropics",
       "created_at": "2025-09-22T15:53:31Z"
     },
@@ -171,7 +171,7 @@
       "full_name": "Snailclimb/JavaGuide",
       "url": "https://github.com/Snailclimb/JavaGuide",
       "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
-      "stars": 158255,
+      "stars": 158257,
       "forks": 46154,
       "language": "JavaScript",
       "topics": [
@@ -181,7 +181,7 @@
         "deepseek",
         "interview"
       ],
-      "updated_at": "2026-09-04T01:55:21Z",
+      "updated_at": "2026-09-04T02:28:44Z",
       "owner": "Snailclimb",
       "created_at": "2018-05-07T13:27:00Z"
     },
@@ -191,8 +191,8 @@
       "full_name": "langgenius/dify",
       "url": "https://github.com/langgenius/dify",
       "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
-      "stars": 154377,
-      "forks": 24401,
+      "stars": 154380,
+      "forks": 24402,
       "language": "TypeScript",
       "topics": [
         "agent",
@@ -201,7 +201,7 @@
         "agentic-workflow",
         "ai"
       ],
-      "updated_at": "2026-09-04T01:55:26Z",
+      "updated_at": "2026-09-04T02:32:13Z",
       "owner": "langgenius",
       "created_at": "2023-04-12T07:40:24Z"
     },
@@ -211,7 +211,7 @@
       "full_name": "langflow-ai/langflow",
       "url": "https://github.com/langflow-ai/langflow",
       "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
-      "stars": 154220,
+      "stars": 154221,
       "forks": 10014,
       "language": "Python",
       "topics": [
@@ -221,7 +221,7 @@
         "large-language-models",
         "multiagent"
       ],
-      "updated_at": "2026-09-04T01:20:04Z",
+      "updated_at": "2026-09-04T02:32:25Z",
       "owner": "langflow-ai",
       "created_at": "2023-02-08T22:28:03Z"
     },
@@ -231,8 +231,8 @@
       "full_name": "open-webui/open-webui",
       "url": "https://github.com/open-webui/open-webui",
       "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-      "stars": 150849,
-      "forks": 22041,
+      "stars": 150852,
+      "forks": 22042,
       "language": "Python",
       "topics": [
         "ai",
@@ -241,7 +241,7 @@
         "llm-webui",
         "llms"
       ],
-      "updated_at": "2026-09-04T01:57:04Z",
+      "updated_at": "2026-09-04T02:38:24Z",
       "owner": "open-webui",
       "created_at": "2023-10-06T22:08:27Z"
     },
@@ -251,11 +251,11 @@
       "full_name": "msitarzewski/agency-agents",
       "url": "https://github.com/msitarzewski/agency-agents",
       "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
-      "stars": 149919,
+      "stars": 149921,
       "forks": 24156,
       "language": "Shell",
       "topics": [],
-      "updated_at": "2026-09-04T01:58:22Z",
+      "updated_at": "2026-09-04T02:38:00Z",
       "owner": "msitarzewski",
       "created_at": "2025-10-13T12:12:29Z"
     },
@@ -265,8 +265,8 @@
       "full_name": "langchain-ai/langchain",
       "url": "https://github.com/langchain-ai/langchain",
       "description": "The agent engineering platform.",
-      "stars": 145602,
-      "forks": 24304,
+      "stars": 145603,
+      "forks": 24305,
       "language": "Python",
       "topics": [
         "agents",
@@ -275,7 +275,7 @@
         "anthropic",
         "chatgpt"
       ],
-      "updated_at": "2026-09-04T02:03:03Z",
+      "updated_at": "2026-09-04T02:18:13Z",
       "owner": "langchain-ai",
       "created_at": "2022-10-17T02:58:36Z"
     },
@@ -285,11 +285,11 @@
       "full_name": "anthropics/claude-code",
       "url": "https://github.com/anthropics/claude-code",
       "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
-      "stars": 143966,
-      "forks": 23007,
+      "stars": 143969,
+      "forks": 23008,
       "language": "Python",
       "topics": [],
-      "updated_at": "2026-09-04T02:07:04Z",
+      "updated_at": "2026-09-04T02:34:24Z",
       "owner": "anthropics",
       "created_at": "2025-02-22T17:41:21Z"
     },
@@ -299,7 +299,7 @@
       "full_name": "Shubhamsaboo/awesome-llm-apps",
       "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
       "description": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
-      "stars": 135942,
+      "stars": 135948,
       "forks": 19995,
       "language": "Python",
       "topics": [
@@ -308,7 +308,7 @@
         "python",
         "rag"
       ],
-      "updated_at": "2026-09-04T02:08:09Z",
+      "updated_at": "2026-09-04T02:33:57Z",
       "owner": "Shubhamsaboo",
       "created_at": "2024-04-29T05:30:25Z"
     },
@@ -318,8 +318,8 @@
       "full_name": "farion1231/cc-switch",
       "url": "https://github.com/farion1231/cc-switch",
       "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
-      "stars": 130953,
-      "forks": 9001,
+      "stars": 130964,
+      "forks": 9002,
       "language": "Rust",
       "topics": [
         "ai-tools",
@@ -328,7 +328,7 @@
         "desktop-app",
         "grok"
       ],
-      "updated_at": "2026-09-04T02:01:19Z",
+      "updated_at": "2026-09-04T02:38:27Z",
       "owner": "farion1231",
       "created_at": "2025-08-04T14:16:16Z"
     },
@@ -338,13 +338,13 @@
       "full_name": "ggml-org/llama.cpp",
       "url": "https://github.com/ggml-org/llama.cpp",
       "description": "LLM inference in C/C++",
-      "stars": 126954,
-      "forks": 22728,
+      "stars": 126957,
+      "forks": 22730,
       "language": "C++",
       "topics": [
         "ggml"
       ],
-      "updated_at": "2026-09-04T02:05:44Z",
+      "updated_at": "2026-09-04T02:37:25Z",
       "owner": "ggml-org",
       "created_at": "2023-03-10T18:58:00Z"
     },
@@ -354,8 +354,8 @@
       "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
-      "stars": 124704,
-      "forks": 13344,
+      "stars": 124710,
+      "forks": 13346,
       "language": "Python",
       "topics": [
         "ai-skills",
@@ -364,7 +364,7 @@
         "claude-code",
         "codex"
       ],
-      "updated_at": "2026-09-04T02:08:20Z",
+      "updated_at": "2026-09-04T02:37:41Z",
       "owner": "nextlevelbuilder",
       "created_at": "2025-11-30T11:36:31Z"
     }
