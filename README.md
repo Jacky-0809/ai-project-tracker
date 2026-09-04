@@ -70,11 +70,26 @@ https://<user>.github.io/<repo>/output/Ai_skill_2026_09_04/
   "facebook": {
     "pages": ["OpenAI", "DeepMind", "AnthropicAI", "MetaAILabs", "GoogleAI", "AIatMicrosoft"],
     "show_example_flag": true
+  },
+  "filtering": {
+    "quality_floors": { "github": 5, "x": 3, "youtube": 100, "facebook": 5, "min_description_chars": 30 }
   }
 }
 ```
 
 `facebook.pages` 配置用于（无鉴权）抓取公开页面动态；未配置密钥或抓取失败时自动降级到内置示例数据。
+
+## 内容筛选（AI-Skill 精选 & 去广告）
+
+报告只保留**优秀 AI skill 的介绍/测评/用法教程**，并过滤广告、垃圾与推销内容。筛选逻辑集中在 `scripts/filtering.py`（渲染期统一处理，关键词可改）:
+
+- **包含信号**：命中中英文关键词（skill 教程/测评/清单/用法/工作流/提示词工程/MCP 等）加分
+- **排除信号**：命中 `限时/扫码/加微信/免费领取/立即购买/点击领取/sponsored/buy now/crypto` 等硬广告词 → 扣分或直接剔除
+- **质量下限**：描述过短、表单无返回、各平台最低热度（star/likes/views）不足 → 丢弃
+- **灰名单**：一个硬广告词但有强包含信号，或作者在白名单 → 允许但扣分；两个以上硬广告词一律剔除
+- **评分排序**：`包含×0.30 + 热度×0.25 + 描述×0.20 + 平台×0.15 - 广告惩罚`，取 Top-N
+
+关键词表内置在 `filtering.py`，也可在 `config["filtering"]` 中覆盖扩展。
 
 ## 合规说明
 

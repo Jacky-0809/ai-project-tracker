@@ -41,7 +41,14 @@ def main():
             payload = json.load(f)
     else:
         payload = scrape_all(config, top_n)
-        save_json(payload, os.path.join(data_dir, "report.json"))
+
+    # ---- 1.5 Filter & rank (remove ads/spam, surface good AI-skill content) ----
+    from filtering import filter_and_rank_top
+    filtered = filter_and_rank_top(payload, top_n, config)
+    payload = {"date": payload.get("date", date), **filtered}
+    for k, v in filtered.items():
+        print(f"🧹 {k}: 过滤后保留 {len(v)} 条")
+    save_json(payload, os.path.join(data_dir, "report.json"))
 
     # ---- 2. Generate HTML + PDF ----
     from generators.html_generator import generate_daily_html

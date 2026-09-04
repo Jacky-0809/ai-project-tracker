@@ -11,5 +11,14 @@
   "facebook": {
     "pages": ["OpenAI", "DeepMind", "AnthropicAI", "MetaAILabs", "GoogleAI", "AIatMicrosoft"],
     "show_example_flag": true
+  },
+  "filtering": {
+    "quality_floors": {
+      "github": 5,
+      "x": 3,
+      "youtube": 100,
+      "facebook": 5,
+      "min_description_chars": 30
+    }
   }
 }

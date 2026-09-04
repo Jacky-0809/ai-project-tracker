@@ -14,6 +14,7 @@ description: 每日抓取GitHub、X(Twitter)、YouTube上排名前20的AI Skill�
 - 抓取YouTube上关于AI项目/Skill的热门视频
 - 抓取Facebook公开页面的AI项目动态
 - 生成当日排名前20的AI项目报告
+- **内容筛选**：只保留优秀 AI skill 的介绍/测评/用法教程，自动过滤广告、垃圾与推销（`scripts/filtering.py`，含中英文关键词 + 评分排序 + 质量下限）
 - 输出HTML和PDF两种格式
 - 自动发布到GitHub Pages
 
