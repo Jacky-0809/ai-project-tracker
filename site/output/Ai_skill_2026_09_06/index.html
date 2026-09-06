@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 项目每日排行榜 · 2026-09-06</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f4f6f9; color: #2d3340; line-height: 1.55; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+header { background: linear-gradient(135deg, #1e90ff, #6a5ae0); color: #fff; padding: 30px 0; margin-bottom: 24px; }
+header h1 { font-size: 25px; margin-bottom: 6px; letter-spacing: .5px; }
+header .date { opacity: .92; font-size: 14px; }
+nav { background: #fff; padding: 10px 0; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 10; }
+nav a { color: #1e90ff; text-decoration: none; margin-right: 18px; font-weight: 500; }
+nav a:hover { text-decoration: underline; }
+.card { background: #fff; border-radius: 12px; padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.07); border-top: 4px solid #e3e8f0; }
+.card h2 { font-size: 19px; color: #1b2430; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.card h2 .src-hint { margin-left: auto; font-size: 12px; font-weight: 400; color: #8a94a6; }
+
+/* ---- platform accents ---- */
+.card.github  { border-top-color: #24292e; }
+.card.x       { border-top-color: #1da1f2; }
+.card.youtube { border-top-color: #ff0000; }
+.card.facebook{ border-top-color: #1877f2; }
+
+.platform-badge { display: inline-block; padding: 3px 11px; border-radius: 16px; font-size: 12px; font-weight: 600; color: #fff; }
+.badge-github { background: #24292e; }
+.badge-x { background: #1da1f2; }
+.badge-youtube { background: #ff0000; }
+.badge-facebook { background: #1877f2; }
+
+/* ---- summary stat cards ---- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.stat { display: flex; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #edf1f7; border-radius: 10px; padding: 14px 16px; }
+.stat .ic { font-size: 26px; }
+.stat b { display: block; font-size: 22px; color: #1e90ff; line-height: 1.1; }
+.stat span { font-size: 12px; color: #6b7686; }
+.stat.note { grid-column: 1 / -1; background: #fffbe9; border-color: #f5e9b8; }
+.stat.note span { color: #8a6d1a; }
+
+/* ---- data table (4 columns) ---- */
+.table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 13.5px; table-layout: fixed; }
+.data-table th { text-align: left; padding: 10px 12px; font-size: 12px; font-weight: 600; color: #fff; letter-spacing: .3px; border: none; }
+.data-table thead.github th { background: #24292e; }
+.data-table thead.x th { background: #1da1f2; }
+.data-table thead.youtube th { background: #ff0000; }
+.data-table thead.facebook th { background: #1877f2; }
+.data-table td { padding: 11px 12px; border-bottom: 1px solid #eef1f6; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+.data-table tbody tr:nth-child(even) { background: #fafbfe; }
+.data-table tbody tr:hover { background: #eef4ff; }
+
+/* column widths (sum to 100%) */
+.col-rank { width: 5%; text-align: center; font-weight: 700; color: #1e90ff; }
+.col-title { width: 25%; font-weight: 600; }
+.col-desc  { width: 45%; color: #4a5465; }
+.col-author{ width: 12%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #5a6475; }
+.col-heat  { width: 13%; white-space: nowrap; color: #444c59; font-variant-numeric: tabular-nums; }
+
+.data-table .col-title a { color: #1a73e8; text-decoration: none; word-break: break-word; }
+.data-table .col-title a:hover { text-decoration: underline; }
+
+/* example vs live */
+.row-example { opacity: .62; }
+.row-example td { background-image: linear-gradient(90deg, rgba(0,0,0,0) 0, rgba(0,0,0,.05) 900px); }
+.tag-example { display: inline-block; background: #f0f2f7; color: #8a94a6; border: 1px solid #e2e6ee; border-radius: 4px; font-size: 11px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; font-weight: 400; }
+
+.heat-stars { color: #eab308; font-weight: 700; }
+.heat-likes { color: #e0245e; font-weight: 700; }
+.heat-views { color: #ff0000; font-weight: 700; }
+.heat-heat  { color: #1e90ff; font-weight: 700; }
+
+.empty { color: #8a94a6; font-size: 13px; padding: 12px 0; }
+
+footer { text-align: center; padding: 26px 0; color: #9aa3b2; font-size: 13px; }
+.report-links { margin-bottom: 16px; }
+.btn { display: inline-block; padding: 9px 18px; background: #1e90ff; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; }
+.btn:hover { background: #0073d6; }
+.btn-secondary { background: #6a5ae0; }
+.btn-secondary:hover { background: #5a49cf; }
+
+@media (max-width: 720px) {
+  .col-title { width: 32%; }
+  .col-desc  { width: 40%; }
+  .col-author{ display: none; }
+}
+@media print { nav, footer, .report-links { display: none; } body { background: #fff; } .card { box-shadow: none; border: 1px solid #eee; } }
+.badge-new{background:#facc15;color:#1a1a1a;font-size:.72em;padding:2px 7px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.badge-rising{background:#34d399;color:#064e3b;font-size:.72em;padding:2px 7px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.trending-desc{font-size:.82em;color:#64748b;margin:4px 0 12px}
+.card.trending{background:linear-gradient(135deg,#fef9ee 0%,#fff 50%);border:1px solid #f59e0b20}
+.card.bookmarks{background:linear-gradient(135deg,#f0f9ff 0%,#fff 50%);border:1px solid #3b82f620}
+
+</style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>🤖 AI 项目 / AI Skill 每日排行榜</h1>
+        <div class="date">2026-09-06 · 数据来源：GitHub / X / YouTube / Facebook</div>
+    </div>
+</header>
+<nav>
+    <div class="container">
+        <a href="index.html">📄 本页</a>
+        <a href="report.pdf">⬇ 下载 PDF</a>
+    </div>
+</nav>
+<main class="container">
+    <div class="report-links">
+        <a class="btn btn-secondary" href="report.pdf">⬇ 下载 PDF 版本</a>
+    </div>
+
+    <div class="card">
+        <h2>📊 今日概览</h2>
+        
+    <div class="stats">
+        <div class="stat">
+        <div class="ic">🏆</div>
+        <div><b>20</b><span>GitHub 仓库</span></div>
+    </div><div class="stat">
+        <div class="ic">🐦</div>
+        <div><b>20</b><span>X 讨论</span></div>
+    </div><div class="stat">
+        <div class="ic">▶️</div>
+        <div><b>20</b><span>YouTube 视频</span></div>
+    </div><div class="stat">
+        <div class="ic">📘</div>
+        <div><b>19</b><span>Facebook 帖子</span></div>
+    </div>
+        <div class="stat note"><div class="ic">ℹ️</div><div><span>共收录 <b>79</b> 条动态；GitHub 为实时数据，X/YouTube/Facebook 无密钥时展示示例数据（已淡化并标注）。</span></div></div>
+    </div>
+    </div>
+
+    <div class="card trending">
+        <h2>🚀 新上榜单 / 上升最快 Top 20<span class="src-hint">跨平台 Momentum</span></h2>
+        <p class="trending-desc">按「新鲜度 × 热度」综合评分，<span class="badge-new">新</span> = 最近 30 天发布，<span class="badge-rising">上升</span> = 高速度增长</p>
+        <div class="table-wrap">
+        <table>
+    <thead>
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-heat">Momentum</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_0" target="_blank">Claude Code Skills 完整教程：从零到生产环境的 Agent Skill 开发指南</a><span class="badge-new">新</span></td>
+            <td class="col-desc">完整介绍如何使用 Claude Code Skills 构建生产级 AI agent，包含 MCP 工具集成、工作流编排、测试与部署的最佳实践。</td>
+            <td class="col-heat"><b>1.00</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_1" target="_blank">我用 OpenAI Codex CLI 写了一个自动部署 Skill 的 Pipeline</a><span class="badge-new">新</span></td>
+            <td class="col-desc">实战演示如何用 Codex CLI 从零构建一个完整的 skill 自动部署 pipeline，从代码编写到 GitHub Actions 到生产上线只用 5 分钟。</td>
+            <td class="col-heat"><b>1.00</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_2" target="_blank">50 个最佳 Claude Skills 清单：2026 年 AI Agent 技能生态全景</a><span class="badge-new">新</span></td>
+            <td class="col-desc">盘点 2026 年最值得关注的 50 个 Claude Skills，涵盖编码、写作、数据分析、自动化、多模态等场景。</td>
+            <td class="col-heat"><b>0.99</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_3" target="_blank">@modelcontextprotocol</a><span class="badge-new">新</span></td>
+            <td class="col-desc">MCP 3.0 发布：统一 agent ↔ tool ↔ skill 交互协议，开发者只需写一个适配器</td>
+            <td class="col-heat"><b>0.99</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_3" target="_blank">MCP 3.0 深度解析：统一 Agent ↔ Tool ↔ Skill 交互协议</a><span class="badge-new">新</span></td>
+            <td class="col-desc">MCP 3.0 规范草案解读，详解如何统一 agent 与 tool 和 skill 之间的交互协议，开发者只需写一个适配器。</td>
+            <td class="col-heat"><b>0.99</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_2" target="_blank">@LangChainAI</a><span class="badge-new">新</span></td>
+            <td class="col-desc">分享我整理的 50 个最佳 Claude Skills 清单：涵盖编码、写作、数据分析、自动化</td>
+            <td class="col-heat"><b>0.99</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_4" target="_blank">Gemini Skill Framework：构建实时多模态翻译 Agent 实战</a><span class="badge-new">新</span></td>
+            <td class="col-desc">使用 Google Gemini Skill Framework 构建一个支持视觉+语音的实时多模态翻译 agent，含完整代码与部署指南。</td>
+            <td class="col-heat"><b>0.99</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_5" target="_blank">vLLM v0.7 Skill-Aware Routing：不同 Skill 自动选择最优推理后端</a><span class="badge-new">新</span></td>
+            <td class="col-desc">vLLM v0.7 新特性详解：skill-aware routing 让系统根据 skill 类型自动选择最优推理后端，推理成本降低 40%。</td>
+            <td class="col-heat"><b>0.98</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_6" target="_blank">@OpenClaw</a><span class="badge-new">新</span></td>
+            <td class="col-desc">OpenClaw skill 生态突破 100万次下载！社区贡献的 top skill 覆盖 30+ 平台</td>
+            <td class="col-heat"><b>0.98</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_6" target="_blank">OpenClaw 生态突破 100 万次下载：社区 Top Skill 盘点</a><span class="badge-new">新</span></td>
+            <td class="col-desc">OpenClaw skill 生态里程碑：社区贡献的 top skill 已覆盖 30+ 平台，下载量突破 100 万次。</td>
+            <td class="col-heat"><b>0.98</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_7" target="_blank">Copilot Studio Skill Marketplace 深度评测</a><span class="badge-new">新</span></td>
+            <td class="col-desc">微软 Copilot Studio 新增 skill marketplace 的完整评测：企业可内部发布、版本管理、权限控制自定义 skill。</td>
+            <td class="col-heat"><b>0.98</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_8" target="_blank">Hermes 3：首个支持通用 Skill 执行的本地 Agent 模型</a><span class="badge-new">新</span></td>
+            <td class="col-desc">NousResearch Hermes 3 深度评测：首个支持通用 skill 执行的本地 agent 模型，量化后可在笔记本上运行。</td>
+            <td class="col-heat"><b>0.98</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_9" target="_blank">HuggingFace Leaderboard 新增 Skill 执行评分：模型排名大洗牌</a><span class="badge-new">新</span></td>
+            <td class="col-desc">HuggingFace Open LLM Leaderboard 新增 skill 执行能力评分维度，模型排名发生重大变化。</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_1" target="_blank">@OpenAI</a><span class="badge-new">新</span></td>
+            <td class="col-desc">刚用 OpenAI Codex CLI 写了一个自动部署 skill 的 pipeline，5分钟搞定从代码到上线</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_4" target="_blank">@GoogleDeepMind</a><span class="badge-new">新</span></td>
+            <td class="col-desc">用 Gemini Skill Framework 构建了一个实时多模态翻译 agent，支持视觉+语音</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_10" target="_blank">AI Safety Eval Harness 1.0：Agent Skill 安全评测框架</a><span class="badge-new">新</span></td>
+            <td class="col-desc">AI safety eval harness 1.0 发布：针对 agent skill 的标准化安全评测框架，含红队测试与对抗样本。</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_11" target="_blank">RAG 2.0 实战：混合检索 + Skill 工具链准确率 92%</a><span class="badge-new">新</span></td>
+            <td class="col-desc">RAG 2.0 实战指南：混合检索 + skill 工具链让 Agent 端到端准确率从 72% 提升到 92%。</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_8" target="_blank">@NousResearch</a><span class="badge-new">新</span></td>
+            <td class="col-desc">NousResearch Hermes 3：首个支持通用 skill 执行的本地 agent 模型，量化后可跑在笔记本上</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_12" target="_blank">Edge AI 技能革命：Skill 在手机/IoT 上直接执行</a><span class="badge-new">新</span></td>
+            <td class="col-desc">Edge AI 技能革命：skill 在手机和 IoT 设备上直接执行，端到端延迟降至毫秒级。</td>
+            <td class="col-heat"><b>0.97</b></td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_13" target="_blank">@OpenAI</a><span class="badge-new">新</span></td>
+            <td class="col-desc">OpenAI Codex 开源终局：skill 标准完全开放，第三方生态进入 fast-follow 阶段</td>
+            <td class="col-heat"><b>0.96</b></td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card bookmarks">
+        <h2>📚 本周收藏 · X<span class="src-hint">用户收藏</span></h2>
+        <p class="trending-desc">本周收藏的 X/Twitter 帖子（需配置 OAuth token）</p>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="x_bookmarks">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_0" target="_blank">@anthropics</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Claude Code Skills 完全指南：从零开始构建你的第一个 AI agent skill，含 MCP 工具集成与工作流编排</td>
+            <td class="col-author">@anthropics</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,340&nbsp;🔁 180</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_2" target="_blank">@LangChainAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">分享我整理的 50 个最佳 Claude Skills 清单：涵盖编码、写作、数据分析、自动化</td>
+            <td class="col-author">@LangChainAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 8,900&nbsp;🔁 1,200</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_4" target="_blank">@GoogleDeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">用 Gemini Skill Framework 构建了一个实时多模态翻译 agent，支持视觉+语音</td>
+            <td class="col-author">@GoogleDeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 6,700&nbsp;🔁 890</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_10" target="_blank">@AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI safety eval harness 1.0 发布：针对 agent skill 的标准化安全评测框架</td>
+            <td class="col-author">@AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 4,300&nbsp;🔁 560</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_17" target="_blank">@GitHub</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">首周 500+ 开发者参与 AI coding agent 技能竞赛，最惊艳的 skill 是一个自动 code review agent</td>
+            <td class="col-author">@GitHub</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 7,800&nbsp;🔁 1,100</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_3" target="_blank">@modelcontextprotocol</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">MCP 3.0 发布：统一 agent ↔ tool ↔ skill 交互协议，开发者只需写一个适配器</td>
+            <td class="col-author">@modelcontextprotocol</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 12,300&nbsp;🔁 2,100</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_6" target="_blank">@OpenClaw</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">OpenClaw skill 生态突破 100万次下载！社区贡献的 top skill 覆盖 30+ 平台</td>
+            <td class="col-author">@OpenClaw</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 9,800&nbsp;🔁 1,500</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_8" target="_blank">@NousResearch</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">NousResearch Hermes 3：首个支持通用 skill 执行的本地 agent 模型，量化后可跑在笔记本上</td>
+            <td class="col-author">@NousResearch</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 7,600&nbsp;🔁 980</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_13" target="_blank">@OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">OpenAI Codex 开源终局：skill 标准完全开放，第三方生态进入 fast-follow 阶段</td>
+            <td class="col-author">@OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 15,200&nbsp;🔁 3,200</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_1" target="_blank">@OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">刚用 OpenAI Codex CLI 写了一个自动部署 skill 的 pipeline，5分钟搞定从代码到上线</td>
+            <td class="col-author">@OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 5,600&nbsp;🔁 420</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_9" target="_blank">@huggingface</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">HuggingFace Open LLM Leaderboard 新增 skill 执行能力评分维度，模型排名大洗牌</td>
+            <td class="col-author">@huggingface</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 5,400&nbsp;🔁 670</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_11" target="_blank">@LangChainAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">RAG 2.0 实战：混合检索 + skill 工具链让 Agent 端到端准确率从 72% 提升到 92%</td>
+            <td class="col-author">@LangChainAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 6,100&nbsp;🔁 830</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_19" target="_blank">@GroqInc</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Groq 推出 on-device LLM runtime：本地执行 skill 的实时推理引擎，延迟 &lt;50ms</td>
+            <td class="col-author">@GroqInc</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 6,400&nbsp;🔁 850</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_5" target="_blank">@vaborabore</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">vLLM v0.7 现在支持 skill-aware routing：不同 skill 自动选择最优推理后端</td>
+            <td class="col-author">@vaborabore</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 4,100&nbsp;🔁 520</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_7" target="_blank">@Microsoft</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Copilot Studio 新增 skill marketplace：企业可内部发布、版本管理、权限控制自定义 skill</td>
+            <td class="col-author">@Microsoft</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 3,200&nbsp;🔁 340</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_15" target="_blank">@Langfuse</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI agent observability 标准化：Skills 现在可追踪、可审计、可回滚，生产部署不再黑箱</td>
+            <td class="col-author">@Langfuse</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 3,600&nbsp;🔁 410</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_14" target="_blank">@GoogleDeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">多模态 skill 框架成熟：视觉/音频/代码 skill 可自由组合编排，不再受限单一模态</td>
+            <td class="col-author">@GoogleDeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 4,900&nbsp;🔁 620</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_18" target="_blank">@LangChainAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">LangGraph 2.0：原生 skill 支持 + 可视化调试，agent 编排进入新阶段</td>
+            <td class="col-author">@LangChainAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 5,200&nbsp;🔁 710</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_12" target="_blank">@Qualcomm</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Edge AI 技能革命：skill 在手机/IoT 设备上直接执行，端到端延迟降至毫秒级</td>
+            <td class="col-author">@Qualcomm</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,800&nbsp;🔁 310</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://x.com/i/status/example_16" target="_blank">@VoltAgent</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">awesome-agent-skills 精选列表突破 1000 条！社区维护的最全 AI skill 发现平台</td>
+            <td class="col-author">@VoltAgent</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,100&nbsp;🔁 280</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card bookmarks">
+        <h2>📚 本周收藏 · YouTube<span class="src-hint">用户收藏</span></h2>
+        <p class="trending-desc">本周收藏的 YouTube 视频（需配置 OAuth token）</p>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="youtube_liked">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_0" target="_blank">Claude Code Skills 完整教程：从零到生产环境的 Agent Skill 开发指南</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">完整介绍如何使用 Claude Code Skills 构建生产级 AI agent，包含 MCP 工具集成、工作流编排、测试与部署的最佳实践。</td>
+            <td class="col-author">AI Explained</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 2,850,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_5" target="_blank">vLLM v0.7 Skill-Aware Routing：不同 Skill 自动选择最优推理后端</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">vLLM v0.7 新特性详解：skill-aware routing 让系统根据 skill 类型自动选择最优推理后端，推理成本降低 40%。</td>
+            <td class="col-author">Weights &amp; Biases</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 980,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_4" target="_blank">Gemini Skill Framework：构建实时多模态翻译 Agent 实战</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">使用 Google Gemini Skill Framework 构建一个支持视觉+语音的实时多模态翻译 agent，含完整代码与部署指南。</td>
+            <td class="col-author">Anthropic</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,120,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_3" target="_blank">MCP 3.0 深度解析：统一 Agent ↔ Tool ↔ Skill 交互协议</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">MCP 3.0 规范草案解读，详解如何统一 agent 与 tool 和 skill 之间的交互协议，开发者只需写一个适配器。</td>
+            <td class="col-author">Andrej Karpathy</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,380,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_10" target="_blank">AI Safety Eval Harness 1.0：Agent Skill 安全评测框架</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI safety eval harness 1.0 发布：针对 agent skill 的标准化安全评测框架，含红队测试与对抗样本。</td>
+            <td class="col-author">AI Safety Fundamentals</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 420,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_2" target="_blank">50 个最佳 Claude Skills 清单：2026 年 AI Agent 技能生态全景</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">盘点 2026 年最值得关注的 50 个 Claude Skills，涵盖编码、写作、数据分析、自动化、多模态等场景。</td>
+            <td class="col-author">Two Minute Papers</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,450,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_1" target="_blank">我用 OpenAI Codex CLI 写了一个自动部署 Skill 的 Pipeline</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">实战演示如何用 Codex CLI 从零构建一个完整的 skill 自动部署 pipeline，从代码编写到 GitHub Actions 到生产上线只用 5 分钟。</td>
+            <td class="col-author">Matthew Berman</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,620,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_7" target="_blank">Copilot Studio Skill Marketplace 深度评测</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">微软 Copilot Studio 新增 skill marketplace 的完整评测：企业可内部发布、版本管理、权限控制自定义 skill。</td>
+            <td class="col-author">Microsoft Developer</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 750,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_8" target="_blank">Hermes 3：首个支持通用 Skill 执行的本地 Agent 模型</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">NousResearch Hermes 3 深度评测：首个支持通用 skill 执行的本地 agent 模型，量化后可在笔记本上运行。</td>
+            <td class="col-author">The AI Epiphany</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,050,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_6" target="_blank">OpenClaw 生态突破 100 万次下载：社区 Top Skill 盘点</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">OpenClaw skill 生态里程碑：社区贡献的 top skill 已覆盖 30+ 平台，下载量突破 100 万次。</td>
+            <td class="col-author">Fireship</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 2,100,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_9" target="_blank">HuggingFace Leaderboard 新增 Skill 执行评分：模型排名大洗牌</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">HuggingFace Open LLM Leaderboard 新增 skill 执行能力评分维度，模型排名发生重大变化。</td>
+            <td class="col-author">Yannic Kilcher</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 890,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_11" target="_blank">RAG 2.0 实战：混合检索 + Skill 工具链准确率 92%</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">RAG 2.0 实战指南：混合检索 + skill 工具链让 Agent 端到端准确率从 72% 提升到 92%。</td>
+            <td class="col-author">Paddy G</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 680,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_16" target="_blank">awesome-agent-skills 突破 1000 条：最全 AI Skill 发现平台</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">awesome-agent-skills 精选列表突破 1000 条，社区维护的最全 AI skill 发现与推荐平台。</td>
+            <td class="col-author">VoltAgent</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 290,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_19" target="_blank">Groq On-Device LLM Runtime：本地 Skill 执行延迟 &lt;50ms</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Groq 推出 on-device LLM runtime：本地执行 skill 的实时推理引擎，端到端延迟低于 50ms。</td>
+            <td class="col-author">Groq</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 850,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_15" target="_blank">AI Agent Observability：Skills 可追踪、可审计、可回滚</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI agent observability 标准化：skills 现在可追踪、可审计、可回滚，生产部署不再黑箱。</td>
+            <td class="col-author">Langfuse</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 380,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_13" target="_blank">OpenAI Codex 开源终局：Skill 标准完全开放</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">OpenAI Codex 正式开源，skill 标准完全开放，第三方生态进入 fast-follow 阶段。</td>
+            <td class="col-author">Sam Altman</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 3,200,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_17" target="_blank">AI Coding Agent 技能竞赛 Top 10 获奖作品解析</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">首周 500+ 开发者参与 AI coding agent 技能竞赛，Top 10 获奖作品深度解析。</td>
+            <td class="col-author">GitHub</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,800,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_12" target="_blank">Edge AI 技能革命：Skill 在手机/IoT 上直接执行</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Edge AI 技能革命：skill 在手机和 IoT 设备上直接执行，端到端延迟降至毫秒级。</td>
+            <td class="col-author">Qualcomm Developer</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 530,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_18" target="_blank">LangGraph 2.0：原生 Skill + 可视化调试实战</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">LangGraph 2.0 实战：原生 skill 支持 + 可视化调试，agent 编排进入新阶段。</td>
+            <td class="col-author">LangChain</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 710,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://www.youtube.com/watch?v=example_14" target="_blank">多模态 Skill 框架实战：视觉+音频+代码 Skill 自由组合</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">多模态 skill 框架实战：视觉/音频/代码 skill 可自由组合编排，不再受限单一模态。</td>
+            <td class="col-author">Google DeepMind</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 920,000</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card github">
+        <h2><span class="platform-badge badge-github">GitHub</span> AI 项目 Top 20<span class="src-hint">实时</span></h2>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="github">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://github.com/langgenius/dify" target="_blank">langgenius/dify</a></td>
+            <td class="col-desc">Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-ho…</td>
+            <td class="col-author">langgenius</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 154,554</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://github.com/anthropics/claude-code" target="_blank">anthropics/claude-code</a></td>
+            <td class="col-desc">Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine…</td>
+            <td class="col-author">anthropics</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 144,193</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://github.com/n8n-io/n8n" target="_blank">n8n-io/n8n</a></td>
+            <td class="col-desc">Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integ…</td>
+            <td class="col-author">n8n-io</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 203,493</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://github.com/msitarzewski/agency-agents" target="_blank">msitarzewski/agency-agents</a></td>
+            <td class="col-desc">A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each …</td>
+            <td class="col-author">msitarzewski</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 150,271</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://github.com/langflow-ai/langflow" target="_blank">langflow-ai/langflow</a></td>
+            <td class="col-desc">Langflow is a powerful tool for building and deploying AI-powered agents and workflows.</td>
+            <td class="col-author">langflow-ai</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 154,305</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://github.com/affaan-m/ECC" target="_blank">affaan-m/ECC</a></td>
+            <td class="col-desc">The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Code…</td>
+            <td class="col-author">affaan-m</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 250,103</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank">Shubhamsaboo/awesome-llm-apps</a></td>
+            <td class="col-desc">100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.</td>
+            <td class="col-author">Shubhamsaboo</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 136,274</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://github.com/Significant-Gravitas/AutoGPT" target="_blank">Significant-Gravitas/AutoGPT</a></td>
+            <td class="col-desc">AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on w…</td>
+            <td class="col-author">Significant-Gravitas</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 187,163</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://github.com/farion1231/cc-switch" target="_blank">farion1231/cc-switch</a></td>
+            <td class="col-desc">A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build &amp; Hermes Agent. Only official website: …</td>
+            <td class="col-author">farion1231</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 131,235</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a></td>
+            <td class="col-desc">Public repository for Agent Skills</td>
+            <td class="col-author">anthropics</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 174,622</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://github.com/DietrichGebert/ponytail" target="_blank">DietrichGebert/ponytail</a></td>
+            <td class="col-desc">Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.</td>
+            <td class="col-author">DietrichGebert</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 128,169</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a></td>
+            <td class="col-desc">An agentic skills framework &amp; software development methodology that works.</td>
+            <td class="col-author">obra</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 282,141</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://github.com/openclaw/openclaw" target="_blank">openclaw/openclaw</a></td>
+            <td class="col-desc">The AI that really does things. Any OS. Any Platform. The lobster way. 🦞</td>
+            <td class="col-author">openclaw</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 388,978</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://github.com/mattpocock/skills" target="_blank">mattpocock/skills</a></td>
+            <td class="col-desc">Skills for Real Engineers. Straight from my .agents directory.</td>
+            <td class="col-author">mattpocock</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 252,938</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://github.com/open-webui/open-webui" target="_blank">open-webui/open-webui</a></td>
+            <td class="col-desc">User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</td>
+            <td class="col-author">open-webui</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 151,074</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://github.com/Snailclimb/JavaGuide" target="_blank">Snailclimb/JavaGuide</a></td>
+            <td class="col-desc">Java 面试 &amp; 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发</td>
+            <td class="col-author">Snailclimb</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 158,299</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://github.com/langchain-ai/langchain" target="_blank">langchain-ai/langchain</a></td>
+            <td class="col-desc">The agent engineering platform.</td>
+            <td class="col-author">langchain-ai</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 145,734</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch/hermes-agent</a></td>
+            <td class="col-desc">The agent that grows with you</td>
+            <td class="col-author">NousResearch</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 242,090</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://github.com/anomalyco/opencode" target="_blank">anomalyco/opencode</a></td>
+            <td class="col-desc">The open source coding agent.</td>
+            <td class="col-author">anomalyco</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 204,756</td>
+        </tr>
+
+        <tr>
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://github.com/ggml-org/llama.cpp" target="_blank">ggml-org/llama.cpp</a></td>
+            <td class="col-desc">LLM inference in C/C++</td>
+            <td class="col-author">ggml-org</td>
+            <td class="col-heat"><span class='heat-stars'>★</span> 127,183</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card x">
+        <h2><span class="platform-badge badge-x">X</span> AI 讨论 Top 20<span class="src-hint">无密钥时为例外数据</span></h2>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="x">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://x.com/AnthropicAI" target="_blank">@AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Claude Skills 生态系统日活开发者超 50万，新增 200+ 社区 skill。</td>
+            <td class="col-author">@AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 9,400&nbsp;🔁 3,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://x.com/opencode_ai" target="_blank">@opencode_ai</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">openclaw skill 生态突破 100万次下载，agent skill 标准基本定型。</td>
+            <td class="col-author">@opencode_ai</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 5,400&nbsp;🔁 1,320</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://x.com/AIethicsboard" target="_blank">@AIethicsboard</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI safety eval harness 1.0：针对 agent skill 的标准化安全评测框架。</td>
+            <td class="col-author">@AIethicsboard</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,400&nbsp;🔁 430</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://x.com/OpenAI" target="_blank">@OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">GPT-5 匹配基准发布：推理能力跨跃式提升，tool-use reliability 大幅改善。</td>
+            <td class="col-author">@OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 12,800&nbsp;🔁 4,120</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://x.com/MetaAILabs" target="_blank">@MetaAILabs</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Llama 4 Scout 开源，128k context + 多语言，训练数据超 30T tokens。</td>
+            <td class="col-author">@MetaAILabs</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 6,110&nbsp;🔁 1,500</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://x.com/GoogleDeepMind" target="_blank">@GoogleDeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">DeepMind 发布 Gemini Nano 2：端侧多模态，支持实时视觉推理。</td>
+            <td class="col-author">@GoogleDeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 7,600&nbsp;🔁 2,010</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://x.com/vaboratory" target="_blank">@vaboratory</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">vLLM v0.7 支持 speculative decoding + skill-aware routing，推理成本降 40%。</td>
+            <td class="col-author">@vaboratory</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,750&nbsp;🔁 510</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://x.com/microsoft" target="_blank">@microsoft</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">微软 Copilot Studio 新增 AI skill marketplace，企业可内部发布 skill。</td>
+            <td class="col-author">@microsoft</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 3,880&nbsp;🔁 770</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://x.com/AnthropicAI" target="_blank">@AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">MCP 3.0 规范草案：统一 agent ↔ tool ↔ skill 的交互协议。</td>
+            <td class="col-author">@AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 4,300&nbsp;🔁 980</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://x.com/NousResearch" target="_blank">@NousResearch</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">NousResearch Hermes 3 发布：首个支持通用 skill 执行的本地 agent 模型。</td>
+            <td class="col-author">@NousResearch</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 3,010&nbsp;🔁 640</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://x.com/coolabaans" target="_blank">@coolabaans</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">社区 awesome-agent-skills 精选列表突破 1000 条，覆盖 30+ 平台。</td>
+            <td class="col-author">@coolabaans</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 2,100&nbsp;🔁 380</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://x.com/GroqInc" target="_blank">@GroqInc</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Groq 推出 on-device LLM runtime：本地执行 skill 的实时推理引擎。</td>
+            <td class="col-author">@GroqInc</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 1,800&nbsp;🔁 320</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://x.com/llamaindex" target="_blank">@llamaindex</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">RAG 2.0：混合检索 + skill 工具链，Agent 端到端准确率提升至 92%。</td>
+            <td class="col-author">@llamaindex</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 1,600&nbsp;🔁 280</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://x.com/LangChainAI" target="_blank">@LangChainAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">LangGraph 2.0：原生 skill 支持 + 可视化调试，agent 编排进入新阶段。</td>
+            <td class="col-author">@LangChainAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 1,400&nbsp;🔁 240</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://x.com/huggingface" target="_blank">@huggingface</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">HuggingFace Open LLM Leaderboard 新增 skill 执行能力评分维度。</td>
+            <td class="col-author">@huggingface</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 1,200&nbsp;🔁 200</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://x.com/Weights_Biases" target="_blank">@Weights_Biases</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI agent observability 标准化：Skills 可追踪、可审计、可回滚。</td>
+            <td class="col-author">@Weights_Biases</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 1,100&nbsp;🔁 180</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://x.com/OpenAI" target="_blank">@OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">OpenAI Codex 开源终局：skill 标准完全开放，生态进入 fast-follow 阶段。</td>
+            <td class="col-author">@OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 600&nbsp;🔁 75</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://x.com/Cohere_Labs" target="_blank">@Cohere_Labs</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">多模态 skill 框架成熟：视觉/音频/代码 skill 可自由组合编排。</td>
+            <td class="col-author">@Cohere_Labs</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 950&nbsp;🔁 150</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://x.com/EdgeImpulse" target="_blank">@EdgeImpulse</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Edge AI 兴起：skill 在手机/IoT 设备上直接执行，延迟降至毫秒级。</td>
+            <td class="col-author">@EdgeImpulse</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 820&nbsp;🔁 120</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://x.com/devpost" target="_blank">@devpost</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AI coding agent 技能竞赛：首周 500+ 开发者提交自定义 skill。</td>
+            <td class="col-author">@devpost</td>
+            <td class="col-heat"><span class='heat-likes'>❤️</span> 700&nbsp;🔁 90</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card youtube">
+        <h2><span class="platform-badge badge-youtube">YouTube</span> AI 视频 Top 20<span class="src-hint">无密钥时为例外数据</span></h2>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="youtube">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=RAG+2.0+全栈实战：向量检索+++Agent+Skil" target="_blank">RAG 2.0 全栈实战：向量检索 + Agent Skill + 生产部署</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">新一代 RAG 架构详解，混合检索、skill 工具链、准确率优化...</td>
+            <td class="col-author">Data Independent</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 760,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=MCP+3.0+协议详解：统一+agent+↔+tool+↔" target="_blank">MCP 3.0 协议详解：统一 agent ↔ tool ↔ skill 交互标准</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Anthropic 官方讲解 Model Context Protocol 3.0 的设计哲学和实现细节...</td>
+            <td class="col-author">Anthropic</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,120,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=HuggingFace+Open+LLM+Leaderboa" target="_blank">HuggingFace Open LLM Leaderboard 新增 Skill 执行评分</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Open LLM Leaderboard 新增的 agent skill 执行能力维度解读...</td>
+            <td class="col-author">Hugging Face</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 180,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Copilot+Studio+Skill+Marketpla" target="_blank">Copilot Studio Skill Marketplace 企业级部署指南</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">微软 Copilot Studio 新 skill marketplace 的完整使用教程...</td>
+            <td class="col-author">Microsoft Developer</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 160,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=openclaw+++opencode+skill+开发实战" target="_blank">openclaw + opencode skill 开发实战：从零构建生产级 AI 工具</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">手把手教学如何为 Claude Code / OpenCode 编写高质量 skill...</td>
+            <td class="col-author">The AI Epiphany</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 980,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Claude+4+Skills+生态全景：如何用+skill" target="_blank">Claude 4 Skills 生态全景：如何用 skill 扩展 Claude 的能力边界</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">全面介绍 Claude Skills 框架、社区 skill 市场、企业部署最佳实践...</td>
+            <td class="col-author">Matthew Berman</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,620,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=AI+Agent+工具链+2026：从+skill+到编排到" target="_blank">AI Agent 工具链 2026：从 skill 到编排到生产的完整流程</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">深入讲解现代 AI agent 的 skill 架构、MCP 协议、生产部署经验...</td>
+            <td class="col-author">Andrej Karpathy</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,380,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=AI+Coding+Agent+技能大赛回顾：500++开发" target="_blank">AI Coding Agent 技能大赛回顾：500+ 开发者的 Skill 作品集</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">盘点近期 AI coding agent skill 大赛的最佳作品...</td>
+            <td class="col-author">DevPost</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 280,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=OpenAI+GPT-5+完整技术分析：推理、工具使用、多模" target="_blank">OpenAI GPT-5 完整技术分析：推理、工具使用、多模态能力全面评测</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">深入分析 GPT-5 的推理能力提升、原生工具调用、多模态融合...</td>
+            <td class="col-author">AI Explained</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 2,850,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=AI+Safety+Eval+1.0：针对+Agent+Sk" target="_blank">AI Safety Eval 1.0：针对 Agent Skill 的安全评测标准</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">介绍新的 agent skill 安全评测框架和已知漏洞类型...</td>
+            <td class="col-author">Yannic Kilcher</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 420,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=AI+Agent+Observability+标准：Skil" target="_blank">AI Agent Observability 标准：Skill 追踪、审计、回滚实战</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">生产环境中 AI agent skill 的可观测性最佳实践...</td>
+            <td class="col-author">Weights &amp; Biases</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 140,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=DeepMind+Gemini+Nano+2：端侧多模态+A" target="_blank">DeepMind Gemini Nano 2：端侧多模态 AI 的突破与局限</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Google DeepMind 最新端侧模型 Gemini Nano 2 技术解读...</td>
+            <td class="col-author">Fireship</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 890,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=LangGraph+2.0+发布：原生+Skill+支持++" target="_blank">LangGraph 2.0 发布：原生 Skill 支持 + 可视化调试</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">LangGraph 2.0 的新特性演示，skill 编排、实时监控、测试工具...</td>
+            <td class="col-author">LangChain</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 380,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Llama+4+开源震撼发布：128k+context+++" target="_blank">Llama 4 开源震撼发布：128k context + 端侧推理实战</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Meta Llama 4 Scout/B开源模型对比、性能基准、本地部署指南...</td>
+            <td class="col-author">Two Minute Papers</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 1,450,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Hermes+3：首个支持通用+Skill+执行的本地+Ag" target="_blank">Hermes 3：首个支持通用 Skill 执行的本地 Agent 模型</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">NousResearch 最新模型支持原生 skill 调用，完整本地运行...</td>
+            <td class="col-author">NousResearch</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 650,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=vLLM+0.7+Speculative+Decoding+" target="_blank">vLLM 0.7 Speculative Decoding 实测：推理成本直降 40%</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">vLLM 新版本的推测解码优化实测，包含 skill-aware 路由...</td>
+            <td class="col-author">Weights &amp; Biases</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 540,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Groq+On-Device+LLM+Runtime：本地执" target="_blank">Groq On-Device LLM Runtime：本地执行 Skill 的毫秒级推理</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Groq 最新端侧推理引擎的性能实测和 skill 执行演示...</td>
+            <td class="col-author">Groq</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 210,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=DeepSeek+V3+开源：高性能推理+++Skill+执" target="_blank">DeepSeek V3 开源：高性能推理 + Skill 执行实测</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">DeepSeek 最新版本的技术评测和 skill 执行实测...</td>
+            <td class="col-author">AI Explained</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 120,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=Edge+AI+兴起：Skill+在手机/IoT+设备上执行" target="_blank">Edge AI 兴起：Skill 在手机/IoT 设备上执行的完整方案</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">端侧 AI skill 执行的技术方案，含案例和性能基准...</td>
+            <td class="col-author">Edge Impulse</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 320,000</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">20</td>
+            <td class="col-title"><a href="https://www.youtube.com/results?search_query=多模态+Skill+框架：视觉/音频/代码+Skill+自由" target="_blank">多模态 Skill 框架：视觉/音频/代码 Skill 自由组合编排</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Cohere 讲解多模态 skill 框架的设计和实现...</td>
+            <td class="col-author">Cohere</td>
+            <td class="col-heat"><span class='heat-views'>▶️</span> 240,000</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+
+    <div class="card facebook">
+        <h2><span class="platform-badge badge-facebook">Facebook</span> AI 动态 Top 20<span class="src-hint">公开页面抓取</span></h2>
+        <div class="table-wrap">
+        <table class="data-table">
+    <thead class="facebook">
+        <tr>
+            <th class="col-rank">#</th>
+            <th class="col-title">Title</th>
+            <th class="col-desc">Description</th>
+            <th class="col-author">Author</th>
+            <th class="col-heat">热度</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr class="row-example">
+            <td class="col-rank">1</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AnthropicAI" target="_blank">AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Claude Skills: composable, reusable capabilities you can share across teams. Define a skill once — coding, research, data analysis — and plu…</td>
+            <td class="col-author">AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 9,800</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">2</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AnthropicAI" target="_blank">AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Claude 4 Opus is here — our most intelligent model, now with extended thinking, computer use, and tool use capabilities. Claude can now mana…</td>
+            <td class="col-author">AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 27,800</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">3</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AIatMicrosoft" target="_blank">AIatMicrosoft</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Microsoft Copilot Studio: create custom AI agents for your enterprise — no code required. Connect to your data, define workflows, and deploy…</td>
+            <td class="col-author">AIatMicrosoft</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 15,300</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">4</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/OpenAI" target="_blank">OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Introducing GPT-5: our most capable model yet. GPT-5 brings native multimodal reasoning, 128K context, and a new coding agent that can build…</td>
+            <td class="col-author">OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 48,200</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">5</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/DeepMind" target="_blank">DeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Our latest research: Gemini 2.5 Pro achieves state-of-the-art on 30+ benchmarks. New advances in long-context reasoning, scientific discover…</td>
+            <td class="col-author">DeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 31,500</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">6</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/MetaAILabs" target="_blank">MetaAILabs</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Llama 4 is now open-source and available for download. With 405B parameters, vision capabilities, and 256K context window — the most powerfu…</td>
+            <td class="col-author">MetaAILabs</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 35,100</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">7</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AnthropicAI" target="_blank">AnthropicAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Responsible Scaling Policy update: we&#x27;ve audited Claude 4&#x27;s capabilities against our ASL-4 threat model. New evaluations show significant im…</td>
+            <td class="col-author">AnthropicAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 11,200</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">8</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/OpenAI" target="_blank">OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Sora is now available to all users — generate cinematic-quality videos from text. New features include scene editing, audio generation, and …</td>
+            <td class="col-author">OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 38,500</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">9</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/GoogleAI" target="_blank">GoogleAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Project Astra: your AI assistant that can see, hear, and help in real-time. Today we&#x27;re opening the API to all developers. Build multimodal …</td>
+            <td class="col-author">GoogleAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 19,600</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">10</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/GoogleAI" target="_blank">GoogleAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Veo 2 video generation is available in public preview. Create 4K, 60fps video clips with physics-aware rendering and consistent character id…</td>
+            <td class="col-author">GoogleAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 17,500</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">11</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/OpenAI" target="_blank">OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Operator is now generally available — your AI agent that browses the web, fills forms, books flights, and manages tasks autonomously. Built-…</td>
+            <td class="col-author">OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 29,300</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">12</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/OpenAI" target="_blank">OpenAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">DevDay 2026 Recap: Realtime API, new fine-tuning tiers, Structured Outputs GA, and the Agents SDK. Building AI agents just got 10x easier. W…</td>
+            <td class="col-author">OpenAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 22,400</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">13</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AIatMicrosoft" target="_blank">AIatMicrosoft</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">GitHub Copilot now supports multi-file editing, autonomous code review, and our new Copilot Workspace for planning complex tasks. Shipping f…</td>
+            <td class="col-author">AIatMicrosoft</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 14,700</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">14</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/GoogleAI" target="_blank">GoogleAI</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Gemma 3: our most efficient open model family. From 2B to 70B parameters, optimized for on-device, edge, and cloud deployment. Includes new …</td>
+            <td class="col-author">GoogleAI</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 16,400</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">15</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/MetaAILabs" target="_blank">MetaAILabs</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">PyTorch 3.0 is here with native distributed training, 4-bit quantization, and the new torch.compile v2 — 3x faster training out of the box. …</td>
+            <td class="col-author">MetaAILabs</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 18,900</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">16</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/DeepMind" target="_blank">DeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">AlphaFold 4 predicts protein interactions with near-experimental accuracy. We&#x27;ve open-sourced the model weights and the full training datase…</td>
+            <td class="col-author">DeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 26,700</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">17</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/DeepMind" target="_blank">DeepMind</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Gemini Nano is now running on over 200 million Android devices. On-device AI for smart replies, summarization, and real-time translation — a…</td>
+            <td class="col-author">DeepMind</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 13,800</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">18</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/AIatMicrosoft" target="_blank">AIatMicrosoft</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Azure AI Foundry: your one-stop platform for building, evaluating, and deploying enterprise AI applications. Now supports 1,800+ models, bui…</td>
+            <td class="col-author">AIatMicrosoft</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 12,100</td>
+        </tr>
+
+        <tr class="row-example">
+            <td class="col-rank">19</td>
+            <td class="col-title"><a href="https://mbasic.facebook.com/MetaAILabs" target="_blank">MetaAILabs</a><span class="tag-example">示例</span></td>
+            <td class="col-desc">Segment Anything 2 (SAM 2) is out — real-time object segmentation in video. Track any object across frames with zero-shot泛化能力. Open weights,…</td>
+            <td class="col-author">MetaAILabs</td>
+            <td class="col-heat"><span class='heat-likes'>👍</span> 21,300</td>
+        </tr>
+</tbody></table>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">由 GitHub Actions 自动生成 · 2026-09-06 · Powered by ai-project-tracker</div>
+</footer>
+</body>
+</html>
